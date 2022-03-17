@@ -1,8 +1,7 @@
-import React from 'react'
 
 const CrewPage = () => {
   return (
-    <div>CrewPage</div>
+    <div className="container">Crew</div>
   )
 }
 

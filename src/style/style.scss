@@ -57,7 +57,7 @@ a {
   &:hover {
     background: rgba($dark, 1);
     color: $white;
-    box-shadow: 0px 4px 20px $light;
+    box-shadow: 0px 5px 20px -5px $light;
     cursor: pointer;
   }
   &:disabled,
@@ -94,7 +94,7 @@ a {
     color: $light;
   }
   &:focus {
-    box-shadow: 0px 4px 20px rgba($dark, 0.3);
+    box-shadow: 0px 5px 20px -5px rgba($dark, 0.3);
   }
 }
 .search__button {
@@ -131,7 +131,7 @@ a {
   width: 56px;
   height: 56px;
   &:hover {
-    box-shadow: 0px 4px 20px rgba($dark, 0.3);
+    box-shadow: 0px 5px 20px -5px rgba($dark, 0.3);
   }
 }
 .navbar__link:not(:last-child) {
@@ -206,4 +206,45 @@ a {
 
 .text-block__title {
   margin-bottom: 20px;
+}
+
+.h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.link__icon {
+  line-height: 0;
+}
+
+.text-box {
+  margin-bottom: 40px;
+}
+
+.youtube_link {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 50px;
+  background-color: #f00;
+  font-size: 14px;
+  font-weight: 500;
+  color: $white;
+  svg {
+    margin-right: 12px;
+  }
+}
+
+.wiki_link {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 50px;
+  background-color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  color: $white;
+  svg {
+    margin-right: 12px;
+  }
 }

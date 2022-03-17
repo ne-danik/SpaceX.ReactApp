@@ -1,4 +1,4 @@
-@import "../../style/varialebles.scss";
+@import "../../../style/varialebles.scss";
 
 .post {
   margin-top: 40px;
@@ -14,12 +14,12 @@
 }
 
 .post__subtitle {
+  margin-bottom: 20px;
   font-size: 14px;
   color: $gray;
 }
 
 .post__text {
-  margin-top: 20px;
   margin-bottom: 40px;
 }
 
@@ -48,18 +48,4 @@
 
 .patch__image {
   margin: 0 auto;
-}
-
-.youtube_link {
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 24px;
-  border-radius: 50px;
-  background-color: #f00;
-  font-size: 14px;
-  font-weight: 600;
-  color: $white;
-  svg {
-    margin-right: 12px;
-  }
 }

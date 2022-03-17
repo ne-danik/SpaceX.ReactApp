@@ -1,8 +1,7 @@
-import React from 'react'
 
 const HistoryPage = () => {
   return (
-    <div>History</div>
+    <div className="container">History</div>
   )
 }
 

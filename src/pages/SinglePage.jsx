@@ -7,8 +7,8 @@ import setContent from '../utils/setContent';
 const SinglePage = ({ Component, dataType }) => {
   const { id } = useParams();
   const [data, setData] = useState({});
-  const { process, setProcess, clearError, getOneLaunch, getOneLaunchpad, getOneLandpad } = useSpacexService();
- 
+  const { process, setProcess, clearError, getOneLaunch, getOneLaunchpad, getOneLandpad, getOneCrewMember, getOneStarlink, getOneDragon, getOneRocket, getOneShip, } = useSpacexService();
+
   useEffect(() => {
     updateData()
   }, [id])
@@ -25,6 +25,21 @@ const SinglePage = ({ Component, dataType }) => {
         break;
       case 'landpad':
         getOneLandpad(id).then(onDataLoaded).then(() => setProcess('success'));
+        break;
+      case 'crew':
+        getOneCrewMember(id).then(onDataLoaded).then(() => setProcess('success'));
+        break;
+      case 'starlink':
+        getOneStarlink(id).then(onDataLoaded).then(() => setProcess('success'));
+        break;
+      case 'dragon':
+        getOneDragon(id).then(onDataLoaded).then(() => setProcess('success'));
+        break;
+      case 'rocket':
+        getOneRocket(id).then(onDataLoaded).then(() => setProcess('success'));
+        break;
+      case 'ship':
+        getOneShip(id).then(onDataLoaded).then(() => setProcess('success'));
         break;
       default:
         return;

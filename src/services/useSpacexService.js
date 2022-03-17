@@ -97,7 +97,7 @@ const useSpacexService = () => {
       launchAttempts: launchpad.launch_attempts,
       launchSuccesses: launchpad.launch_successes,
       details: launchpad.details,
-      wikipedia: launchpad.wikipedia,
+      rockets: launchpad.rockets,
       launches: launchpad.launches,
       image: launchpad.images.large[0],
     }
@@ -179,7 +179,7 @@ const useSpacexService = () => {
     return res.map(_transformDragons);
   };
 
-  const getOneDragons = async (id) => {
+  const getOneDragon = async (id) => {
     const res = await request(`${_apiBase}/dragons/${id}`);
     return _transformDragons(res);
   };
@@ -202,7 +202,7 @@ const useSpacexService = () => {
     return res.map(_transformRockets);
   };
 
-  const getOneRockets = async (id) => {
+  const getOneRocket = async (id) => {
     const res = await request(`${_apiBase}/rockets/${id}`);
     return _transformRockets(res);
   };
@@ -226,24 +226,9 @@ const useSpacexService = () => {
     return res.map(_transformShips);
   };
 
-  const getShipById = async (shipId) => {
-    const res = await request(`${_apiBase}/ships/${shipId}`)
+  const getOneShip = async (id) => {
+    const res = await request(`${_apiBase}/ships/${id}`)
     return _transformShips(res);
-  };
-
-  const getShipByName = async (shipName) => {
-    const res = await request(`${_apiBase}/ships?ship_name=${shipName}`)
-    return _transformShips(res);
-  };
-
-  const getShipsByPort = async (port) => {
-    const res = await request(`${_apiBase}/ships?home_port=${port}`)
-    return res.map(_transformShips);
-  };
-
-  const getShipsByType = async (type) => {
-    const res = await request(`${_apiBase}/ships?ship_type=${type}`)
-    return res.map(_transformShips);
   };
 
   const _transformShips = (ship) => {
@@ -283,16 +268,13 @@ const useSpacexService = () => {
     getOneStarlink,
 
     getAllDragons,
-    getOneDragons,
+    getOneDragon,
 
     getAllRockets,
-    getOneRockets,
+    getOneRocket,
 
     getAllShips,
-    getShipsByPort,
-    getShipsByType,
-    getShipById,
-    getShipByName,
+    getOneShip,
   }
 }
 

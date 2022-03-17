@@ -1,5 +1,5 @@
-@import "../../style/varialebles.scss";
-@import "../../style/mixins.scss";
+@import "../../../style/varialebles.scss";
+@import "../../../style/mixins.scss";
 
 .article {
   position: relative;
@@ -38,7 +38,7 @@
     right: 0;
     bottom: 0;
     background: rgba(black, 0.7);
-    background-image: url("../../resources/images/pix.png");
+    background-image: url("../../../resources/images/pix.png");
     background-blend-mode: overlay;
     opacity: 0.7;
   }
@@ -115,11 +115,17 @@
 }
 
 .article__text {
-  max-width: 60%;
   line-height: 180%;
   @media screen and (max-width: $max_device_width_tablet) {
     max-width: 100%;
   }
+}
+
+.article__social {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 40px;
+  margin-top: 40px;
 }
 
 .article__locate_link {
@@ -160,12 +166,19 @@
 .accordion {
   @include transition;
   position: relative;
-  margin-bottom: 10px;
-  border: 1px solid $light;
   border-radius: 10px;
   overflow: hidden;
+  border: 1px solid #f0f0f0;
   &:hover {
-    box-shadow: 0px 4px 20px $light;
+    box-shadow: 0px 5px 20px -5px $light;
+  }
+}
+
+.accordion__box {
+  @include transition;
+  overflow: hidden;
+  &:not(:last-child) {
+    border-bottom: 1px solid #f0f0f0;
   }
   &.open .accordion__btn {
     background: $light;
@@ -182,7 +195,7 @@
 .accordion__btn {
   @include transition;
   position: relative;
-  padding: 5px 20px;
+  padding: 10px 20px;
   border: 0;
   width: 100%;
   background: #ffffff;
@@ -214,9 +227,7 @@
   span {
     color: $gray;
     font-size: 12px;
-  }
-  @media screen and (max-width: $max_device_width_tablet) {
-    padding: 10px 20px;
+    pointer-events: none;
   }
 }
 
@@ -236,15 +247,15 @@
 }
 
 .accordion__item {
-  padding: 5px 0;
-  @media screen and (max-width: $max_device_width_tablet) {
-    padding: 7px 0;
-  }
+  padding: 7px 0;
 }
 
-.accordion__link:hover {
-  .accordion__link_name {
-    text-decoration: underline;
+.accordion__link {
+  display: block;
+  &:hover {
+    .accordion__link_name {
+      text-decoration: underline;
+    }
   }
 }
 

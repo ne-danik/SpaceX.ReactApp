@@ -2,22 +2,23 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 // hooks
-import useSpacexService from '../../services/useSpacexService';
-import useWeatherService from '../../services/useWeatherService';
+import useSpacexService from '../../../services/useSpacexService';
+import useWeatherService from '../../../services/useWeatherService';
 // styles
 import './singleLaunchpadLayout.scss';
 
 const SingleLaunchpadLayout = ({ data }) => {
   const [launchesData, setLaunchesData] = useState([]);
   const [weatherData, setWeatherData] = useState([]);
+  const [roketsData, setRocketsData] = useState([]);
 
-  const { name, region, locality, latitude, longitude, details, launchAttempts, launchSuccesses, launches, wikipedia, image } = data;
+  const { name, region, locality, latitude, longitude, details, launchAttempts, launchSuccesses, rockets, launches, image } = data;
 
-  const { process, setProcess, clearError, getAllLaunches } = useSpacexService();
+  const { process, setProcess, clearError, getAllLaunches, getAllRockets } = useSpacexService();
   const { wtProcess, wtSetProcess, wtClearError, getWeather } = useWeatherService();
 
   useEffect(() => {
-    onRequest();
+    onLaunchesRequest();
     return () => {
       setLaunchesData([]);
     };
@@ -28,11 +29,17 @@ const SingleLaunchpadLayout = ({ data }) => {
     return () => {
       setWeatherData([]);
     };
-  }, [setLaunchesData, locality, latitude])
+  }, [locality, latitude])
 
-  const onRequest = () => {
+  useEffect(() => {
+    onRocketRequest();
+    return () => {
+      setRocketsData([]);
+    };
+  }, [rockets])
+
+  const onLaunchesRequest = () => {
     clearError();
-
     getAllLaunches()
       .then(onLaunchesDataLoaded)
       .then(() => setProcess('success'))
@@ -45,7 +52,6 @@ const SingleLaunchpadLayout = ({ data }) => {
 
   const onWeatherRequest = () => {
     wtClearError();
-
     if (latitude && longitude) {
       getWeather(latitude, longitude)
         .then(onWeatherDataLoaded)
@@ -57,21 +63,23 @@ const SingleLaunchpadLayout = ({ data }) => {
     setWeatherData(data);
   }
 
+  const onRocketRequest = () => {
+    clearError();
+    getAllRockets()
+      .then(onRocketsDataLoaded)
+      .then(() => setProcess('success'))
+  }
+
+  const onRocketsDataLoaded = (data) => {
+    const arr = data.filter(item => rockets && rockets.indexOf(item.id) !== -1)
+    setRocketsData(arr);
+  }
+
   const getLaunchesThisYear = (data, year) => {
     let arr = [];
     const regexp = new RegExp(year);
     data.map((item) => item.date.match(regexp) ? arr.push(item) : null)
     return arr
-  }
-
-  const handleClick = (e) => {
-    e.target.parentElement.classList.toggle('open');
-    const list = e.target.nextElementSibling;
-    if (list.style.maxHeight) {
-      list.style.maxHeight = null;
-    } else {
-      list.style.maxHeight = list.scrollHeight + "px";
-    }
   }
 
   const renderLaunches = (data) => {
@@ -98,7 +106,7 @@ const SingleLaunchpadLayout = ({ data }) => {
             )
           });
           return (
-            <div key={launch} className="accordion">
+            <div key={launch} className="accordion__box">
               <button className="accordion__btn" onClick={handleClick}>{nameYear} <span> · {year[launch].length}</span></button>
               <div className="accordion__list">
                 <ul className="accordion__items">
@@ -113,10 +121,26 @@ const SingleLaunchpadLayout = ({ data }) => {
     }
 
     return (
-      <>
+      <div className="accordion">
         {renderElements(yearsData)}
-      </>
+      </div>
     )
+  }
+
+  const renderRockets = (data) => {
+    return (
+      data.map((item) => <Link key={item.id} to={`/rockets/${item.id}`}>{item.name}</Link>)
+    )
+  }
+
+  const handleClick = (e) => {
+    e.target.parentElement.classList.toggle('open');
+    const list = e.target.nextElementSibling;
+    if (list.style.maxHeight) {
+      list.style.maxHeight = null;
+    } else {
+      list.style.maxHeight = list.scrollHeight + "px";
+    }
   }
 
   return (
@@ -180,11 +204,15 @@ const SingleLaunchpadLayout = ({ data }) => {
         <div className="article__content">
           <div className="container">
             <div className="text-block">
-              <h3 className="text-block__title">About</h3>
+              <h3 className="h3 text-block__title">About</h3>
               <p className="article__text">{details}</p>
             </div>
             <div className="text-block">
-              <h3 className="text-block__title">Launches</h3>
+              <h3 className="h3 text-block__title">Rockets</h3>
+              <p className="article__text">{rockets && rockets.length ? renderRockets(roketsData) : 'No rockets'}</p>
+            </div>
+            <div className="text-block">
+              <h3 className="h3 text-block__title">Launches</h3>
               {
                 launches && launches.length ? renderLaunches(launchesData) : (<p>There were no launches on the launchpad yet.</p>)
               }
