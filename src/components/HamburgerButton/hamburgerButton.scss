@@ -1,0 +1,50 @@
+@import "../../style/varialebles.scss";
+@import "../../style/mixins.scss";
+
+.burger {
+  display: none;
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 0;
+  padding: 12px;
+  outline: 0;
+  border: 0;
+  background: none;
+  transform-origin: center;
+  cursor: pointer;
+  z-index: 99;
+
+  @media screen and (max-width: $max_device_width_mobile) {
+    display: block;
+  }
+
+  span {
+    @include transition;
+    display: block;
+    margin: 4px 0;
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: $dark;
+  }
+}
+
+.burger.active {
+  span {
+    background-color: $white;
+  }
+  span:nth-of-type(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+  span:nth-of-type(2) {
+    opacity: 0;
+    transform: translate(-12px, 0);
+    pointer-events: none;
+  }
+  span:nth-of-type(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+}

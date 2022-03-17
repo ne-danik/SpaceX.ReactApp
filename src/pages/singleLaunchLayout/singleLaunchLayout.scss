@@ -1,0 +1,65 @@
+@import "../../style/varialebles.scss";
+
+.post {
+  margin-top: 40px;
+  @media screen and (max-width: $max_device_width_mobile) {
+    margin-top: 20px;
+  }
+}
+
+.post__title {
+  margin-bottom: 10px;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.post__subtitle {
+  font-size: 14px;
+  color: $gray;
+}
+
+.post__text {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.post_section__links {
+  color: $gray;
+}
+
+.links__items {
+  display: flex;
+  column-gap: 10px;
+  margin-top: 10px;
+}
+
+.links__link {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  svg {
+    margin-right: 5px;
+  }
+}
+
+.patch {
+  margin-top: 40px;
+}
+
+.patch__image {
+  margin: 0 auto;
+}
+
+.youtube_link {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 50px;
+  background-color: #f00;
+  font-size: 14px;
+  font-weight: 600;
+  color: $white;
+  svg {
+    margin-right: 12px;
+  }
+}

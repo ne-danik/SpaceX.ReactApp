@@ -1,0 +1,13 @@
+.footer {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.copy {
+  font-size: 12px;
+}
+/*# sourceMappingURL=appFooter.css.map */
