@@ -14,7 +14,9 @@ import SingleDragonLayout from '../../pages/layouts/singleDragonLayout/SingleDra
 import SingleRocketLayout from '../../pages/layouts/singleRocketLayout/SingleRocketLayout';
 import SingleShipLayout from '../../pages/layouts/singleShipLayout/SingleShipLayout';
 
-const MainPageLayout = lazy(() => import('../../pages/layouts/mainPageLayout/MainPageLayout'));
+import MainPageLayout from '../../pages/layouts/mainPageLayout/MainPageLayout';
+
+//const MainPageLayout = lazy(() => import('../../pages/layouts/mainPageLayout/MainPageLayout'));
 const MainPage = lazy(() => import('../../pages/MainPage'));
 const AboutPage = lazy(() => import('../../pages/AboutPage'));
 const HistoryPage = lazy(() => import('../../pages/HistoryPage'));
@@ -24,56 +26,144 @@ const StarlinkPage = lazy(() => import('../../pages/StarlinkPage'));
 const DragonsPage = lazy(() => import('../../pages/DragonsPage'));
 const RocketsPage = lazy(() => import('../../pages/RocketsPage'));
 const ShipsPage = lazy(() => import('../../pages/ShipsPage'));
+const NotFoundPage = lazy(() => import('../../pages/notFoundPage/NotFoundPage'));
 
 const App = () => {
   return (
     <Router>
       <AppHeader />
 
-      <Suspense fallback={<Spinner />}>
-        <Routes>
-          <Route path='/' element={<MainPageLayout />}>
-            <Route index element={<MainPage />} />
-            <Route path='crew' element={<CrewPage />} />
-            <Route path='starlink' element={<StarlinkPage />} />
-            <Route path='dragons' element={<DragonsPage />} />
-            <Route path='rockets' element={<RocketsPage />} />
-            <Route path='ships' element={<ShipsPage />} />
-          </Route>
+      <Routes>
+        <Route path='/' element={<MainPageLayout />}>
+          <Route
+            index
+            element={
+              <Suspense fallback={<Spinner />}>
+                <MainPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path='crew'
+            element={
+              <Suspense fallback={<Spinner />}>
+                <CrewPage />
+              </Suspense>
+            }
+          />
+          <Route path='starlink' element={
+            <Suspense fallback={<Spinner />}>
+              <StarlinkPage />
+            </Suspense>
+          }
+          />
+          <Route path='dragons' element={
+            <Suspense fallback={<Spinner />}>
+              <DragonsPage />
+            </Suspense>
+          }
+          />
+          <Route path='rockets' element={
+            <Suspense fallback={<Spinner />}>
+              <RocketsPage />
+            </Suspense>
+          }
+          />
+          <Route path='ships' element={
+            <Suspense fallback={<Spinner />}>
+              <ShipsPage />
+            </Suspense>
+          }
+          />
+        </Route>
 
-          <Route path='/about' element={<AboutPage />} />
-          <Route path='/history' element={<HistoryPage />} />
+        <Route
+          path='/about'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <AboutPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/history'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <HistoryPage />
+            </Suspense>
+          }
+        />
 
-          <Route
-            path='/launches/:id'
-            element={<SinglePage Component={SingleLaunchLayout} dataType='launch' />} />
-          <Route
-            path='/launchpads/:id'
-            element={<SinglePage Component={SingleLaunchpadLayout} dataType='launchpad' />} />
-          <Route
-            path='/landpads/:id'
-            element={<SinglePage Component={SingleLandpadLayout} dataType='landpad' />} />
-          <Route
-            path='/crew/:id'
-            element={<SinglePage Component={SingleCrewLayout} dataType='crew' />} />
-          <Route
-            path='/starlink/:id'
-            element={<SinglePage Component={SingleStarlinkLayout} dataType='starlink' />} />
-          <Route
-            path='/dragons/:id'
-            element={<SinglePage Component={SingleDragonLayout} dataType='dragon' />} />
-          <Route
-            path='/rockets/:id'
-            element={<SinglePage Component={SingleRocketLayout} dataType='rocket' />} />
-          <Route
-            path='/ships/:id'
-            element={<SinglePage Component={SingleShipLayout} dataType='ship' />} />
-        </Routes>
-      </Suspense>
+        <Route
+          path='/launches/:id'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <SinglePage Component={SingleLaunchLayout} dataType='launch' />
+            </Suspense>
+          } />
+        <Route
+          path='/launchpads/:id'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <SinglePage Component={SingleLaunchpadLayout} dataType='launchpad' />
+            </Suspense>
+          } />
+        <Route
+          path='/landpads/:id'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <SinglePage Component={SingleLandpadLayout} dataType='landpad' />
+            </Suspense>
+          } />
+        <Route
+          path='/crew/:id'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <SinglePage Component={SingleCrewLayout} dataType='crew' />
+            </Suspense>
+          } />
+        <Route
+          path='/starlink/:id'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <SinglePage Component={SingleStarlinkLayout} dataType='starlink' />
+            </Suspense>
+          } />
+        <Route
+          path='/dragons/:id'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <SinglePage Component={SingleDragonLayout} dataType='dragon' />
+            </Suspense>
+          } />
+        <Route
+          path='/rockets/:id'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <SinglePage Component={SingleRocketLayout} dataType='rocket' />
+            </Suspense>
+          } />
+        <Route
+          path='/ships/:id'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <SinglePage Component={SingleShipLayout} dataType='ship' />
+            </Suspense>
+          } />
+
+        <Route
+          path='*'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <NotFoundPage />
+            </Suspense>
+          }
+        />
+      </Routes>
 
       <AppFooter />
-    </Router>
+    </Router >
   )
 }
 
-export default App
+export default App;

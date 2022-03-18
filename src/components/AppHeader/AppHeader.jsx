@@ -1,12 +1,12 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 // components
 import HamburgerButton from '../HamburgerButton/HamburgerButton';
-import NavBar from '../NavBar/NavBar';
-import SideMenu from '../SideMenu/SideMenu';
+import MainMenu from '../MainMenu/MainMenu';
+import MobileMenu from '../MobileMenu/MobileMenu';
 // styles
 import './appHeader.scss';
 import logo from '../../resources/images/logo.svg';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const AppHeader = () => {
   const [isMenuOpen, toggleMenuMode] = useState(false);
@@ -39,8 +39,8 @@ const AppHeader = () => {
             </div>
           </div>
 
-          <NavBar />
-          <SideMenu open={isMenuOpen} onToggleMenu={onToggleMenu} />
+          <MainMenu />
+          <MobileMenu open={isMenuOpen} onToggleMenu={onToggleMenu} />
         </div>
       </div>
     </header >

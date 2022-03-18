@@ -2,11 +2,7 @@
 @import "../../style/mixins.scss";
 
 .header {
-  margin-top: 20px;
-  margin-bottom: 80px;
-  @media screen and (max-width: $max_device_width_mobile) {
-    margin-bottom: 40px;
-  }
+  padding: 20px 0 40px;
 }
 .header__inner {
   position: relative;

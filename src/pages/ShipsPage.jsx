@@ -1,7 +1,9 @@
 
 const ShipsPage = () => {
   return (
-    <div className="container">Ships</div>
+    <section className="section">
+      <div className="container">Ships</div>
+    </section>
   )
 }
 

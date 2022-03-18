@@ -1,10 +1,6 @@
 @import "../../../style/varialebles.scss";
 
 .post {
-  margin-top: 40px;
-  @media screen and (max-width: $max_device_width_mobile) {
-    margin-top: 20px;
-  }
 }
 
 .post__title {

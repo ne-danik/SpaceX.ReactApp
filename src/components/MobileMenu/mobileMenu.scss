@@ -1,0 +1,61 @@
+@import "../../style/varialebles.scss";
+@import "../../style/mixins.scss";
+
+.side-menu_overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: 0px;
+  padding-top: 80px;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 300ms ease;
+  z-index: 9;
+
+  @media screen and (max-width: $max_device_width_mobile) {
+    display: flex;
+  }
+
+  &.open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.side-nav__list {
+  text-align: center;
+}
+
+.side-nav__item {
+  margin-bottom: 40px;
+}
+
+.side-nav__link {
+  font-weight: 400;
+  font-size: 16px;
+  color: $light;
+}
+
+.side-nav__link.active {
+  position: relative;
+  color: $light;
+  
+  &::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+    background: $light;
+  }
+}

@@ -1,7 +1,9 @@
 
 const StarlinkPage = () => {
   return (
-    <div className="container">Starlink</div>
+    <section className="section">
+      <div className="container">Starlink</div>
+    </section>
   )
 }
 

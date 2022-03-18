@@ -39,7 +39,7 @@ const LaunchesList = () => {
 
   const onRequest = (initial) => {
     clearError();
-    
+
     initial ? setLoadingMore(false) : setLoadingMore(true);
 
     getAllPastLaunches()
@@ -83,18 +83,16 @@ const LaunchesList = () => {
           {elements}
           {
             launchesList.length ? (
-              <div className="btn-control">
-                <button
-                  type="button"
-                  onClick={() => onRequest()}
-                  className="btn btn_blue_color"
-                  style={{ 'display': laucnhesEnded ? 'none' : 'inline-block' }}
-                  disabled={loadingMore} >
-                  {
-                    loadingMore ? <Spinner size='18px' color='#ffffff' /> : 'Show more'
-                  }
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => onRequest()}
+                className="btn btn_blue_color"
+                style={{ 'display': laucnhesEnded ? 'none' : 'block' }}
+                disabled={loadingMore} >
+                {
+                  loadingMore ? <Spinner size='18px' color='#ffffff' /> : 'Show more'
+                }
+              </button>
             ) : null
           }
         </div>

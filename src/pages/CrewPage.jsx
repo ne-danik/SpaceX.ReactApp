@@ -1,7 +1,9 @@
 
 const CrewPage = () => {
   return (
-    <div className="container">Crew</div>
+    <section className="section">
+      <div className="container">Crew</div>
+    </section>
   )
 }
 

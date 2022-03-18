@@ -1,7 +1,9 @@
 
 const DragonsPage = () => {
   return (
-    <div className="container">Dragons</div>
+    <section className="section">
+      <div className="container">Dragons</div>
+    </section>
   )
 }
 

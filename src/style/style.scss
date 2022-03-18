@@ -2,58 +2,24 @@
 @import "./fonts";
 @import "./reset";
 @import "./mixins";
+@import "./global";
 
-html,
-body {
-  height: 100%;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: $dark;
-  overflow-x: hidden;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-
-.main {
-  flex: 1 0 auto;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  @media screen and (max-width: 1239px) {
-    max-width: 100%;
-  }
-}
-
-a {
-  color: $blue;
-}
-
-.btn-control {
-  margin-top: 40px;
-  text-align: center;
-  @media screen and (max-width: $max_device_width_mobile) {
-    margin-top: 20px;
-  }
-}
 .btn {
   @include transition;
+  display: block;
+  margin: 40px auto 0 auto;
   padding: 10px 20px;
   border: 0;
   border-radius: 10px;
+  width: fit-content;
   background: rgba($dark, 0.03);
   font-weight: 500;
   font-size: 14px;
   color: $dark;
   user-select: none;
+  @media screen and (max-width: $max_device_width_mobile) {
+    margin-top: 20px;
+  }
   &:hover {
     background: rgba($dark, 1);
     color: $white;
@@ -75,107 +41,11 @@ a {
   }
 }
 
-.search {
-  position: relative;
-  margin: 0 auto;
-  max-width: 575px;
-  width: 100%;
-}
-.search__input {
-  @include transition;
-  padding: 12px 48px 12px 12px;
-  border: 0;
-  border-radius: 12px;
-  background: $dark;
-  width: 100%;
-  color: $white;
-  overflow: hidden;
-  &::placeholder {
-    color: $light;
-  }
-  &:focus {
-    box-shadow: 0px 5px 20px -5px rgba($dark, 0.3);
-  }
-}
-.search__button {
-  display: block;
-  position: absolute;
-  content: "";
-  top: 0;
-  bottom: 0;
-  right: 12px;
-  margin: auto 0;
-  border: 0;
-  width: 24px;
-  height: 24px;
-  background: $dark;
-  cursor: pointer;
-}
-
-.navbar {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  @media screen and (max-width: $max_device_width_mobile) {
-    margin-top: 20px;
-  }
-}
-.navbar__link {
-  @include transition;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50px;
-  background: #3c3c3c;
-  width: 56px;
-  height: 56px;
-  &:hover {
-    box-shadow: 0px 5px 20px -5px rgba($dark, 0.3);
-  }
-}
-.navbar__link:not(:last-child) {
-  margin-right: 40px;
-  @media screen and (max-width: $max_device_width_mobile) {
-    margin-right: 20px;
-  }
-}
-.navbar__icon {
-}
-.navbar__text {
-  margin-top: 2px;
-  font-weight: 600;
-  font-size: 8px;
-  line-height: 10px;
-  color: $white;
-}
-
-.section {
-  margin-top: 80px;
-  @media screen and (max-width: $max_device_width_mobile) {
-    margin-top: 40px;
-  }
-}
-.section__title {
-  margin-bottom: 40px;
-  font-weight: 500;
-  font-size: 24px;
-  @media screen and (max-width: $max_device_width_mobile) {
-    margin-bottom: 20px;
-  }
-}
-.section__content {
-}
-
-.launches {
-}
-.launchpads {
-}
-.landpads {
-}
-
 .breadcrumbs {
-  margin-top: 20px;
+  padding: 40px 0;
+  @media screen and (max-width: $max_device_width_mobile) {
+    padding: 20px 0;
+  }
   &__inner {
     display: flex;
     flex-wrap: wrap;
@@ -206,11 +76,6 @@ a {
 
 .text-block__title {
   margin-bottom: 20px;
-}
-
-.h3 {
-  font-size: 20px;
-  font-weight: 600;
 }
 
 .link__icon {
@@ -247,4 +112,99 @@ a {
   svg {
     margin-right: 12px;
   }
+}
+
+.accordion {
+  @include transition;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  &:hover {
+    box-shadow: 0px 5px 20px -5px $light;
+  }
+}
+.accordion__box {
+  @include transition;
+  overflow: hidden;
+  &:not(:last-child) {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  &.open .accordion__btn {
+    background: $light;
+    &::before {
+      height: 0px;
+    }
+  }
+  &.open .accordion__list {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.accordion__btn {
+  @include transition;
+  position: relative;
+  padding: 10px 20px;
+  border: 0;
+  width: 100%;
+  background: #ffffff;
+  color: #000;
+  text-align: left;
+  cursor: pointer;
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 20px;
+    bottom: 0;
+    height: 2px;
+    width: 10px;
+    background: $gray;
+    margin: auto 0;
+  }
+  &::before {
+    @include transition;
+    right: 24px;
+    height: 10px;
+    width: 2px;
+    transform: rotate(0);
+  }
+  &:hover {
+    background: $light;
+  }
+  span {
+    color: $gray;
+    font-size: 12px;
+    pointer-events: none;
+  }
+}
+.accordion__list {
+  @include transition;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.accordion__items {
+  @include transition;
+  padding: 5px 20px;
+  @media screen and (max-width: $max_device_width_tablet) {
+    padding: 10px 20px;
+  }
+}
+.accordion__item {
+  padding: 7px 0;
+}
+.accordion__link {
+  display: block;
+  &:hover {
+    .accordion__link_name {
+      text-decoration: underline;
+    }
+  }
+}
+.accordion__date {
+  margin-left: 5px;
+  font-size: 12px;
+  color: $gray;
 }

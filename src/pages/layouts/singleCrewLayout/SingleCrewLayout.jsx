@@ -1,7 +1,7 @@
 
 const SingleCrewLayout = ({ data }) => {
   return (
-    <div>SingleCrewLayout</div>
+    <section className="section">SingleCrewLayout</section>
   )
 }
 

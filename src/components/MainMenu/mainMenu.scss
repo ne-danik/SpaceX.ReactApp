@@ -1,0 +1,44 @@
+@import '../../style/varialebles.scss';
+@import '../../style/mixins.scss';
+
+.menu {
+  @media screen and (max-width: $max_device_width_mobile) {
+    display: none;
+  }
+}
+.menu__nav {
+}
+
+.nav {
+  padding-bottom: 6px;
+}
+.nav__list {
+  display: flex;
+  align-items: center;
+}
+.nav__item:not(:last-child) {
+  margin-right: 40px;
+}
+.nav__link {
+  @include transition;
+  color: $dark;
+  &:hover {
+    color: $blue;
+  }
+}
+.nav__link.active {
+  position: relative;
+  color: $blue;
+  &::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    top: calc(100% + 2px);
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+    background: $blue;
+  }
+}

@@ -3,10 +3,6 @@
 
 .article {
   position: relative;
-  margin-top: 40px;
-  @media screen and (max-width: $max_device_width_mobile) {
-    margin-top: 20px;
-  }
 }
 
 .article__bg {
@@ -161,106 +157,4 @@
     opacity: 0;
     transform: translateY(10px);
   }
-}
-
-.accordion {
-  @include transition;
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #f0f0f0;
-  &:hover {
-    box-shadow: 0px 5px 20px -5px $light;
-  }
-}
-
-.accordion__box {
-  @include transition;
-  overflow: hidden;
-  &:not(:last-child) {
-    border-bottom: 1px solid #f0f0f0;
-  }
-  &.open .accordion__btn {
-    background: $light;
-    &::before {
-      height: 0px;
-    }
-  }
-  &.open .accordion__list {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-.accordion__btn {
-  @include transition;
-  position: relative;
-  padding: 10px 20px;
-  border: 0;
-  width: 100%;
-  background: #ffffff;
-  color: #000;
-  text-align: left;
-  cursor: pointer;
-  &::after,
-  &::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    right: 20px;
-    bottom: 0;
-    height: 2px;
-    width: 10px;
-    background: $gray;
-    margin: auto 0;
-  }
-  &::before {
-    @include transition;
-    right: 24px;
-    height: 10px;
-    width: 2px;
-    transform: rotate(0);
-  }
-  &:hover {
-    background: $light;
-  }
-  span {
-    color: $gray;
-    font-size: 12px;
-    pointer-events: none;
-  }
-}
-
-.accordion__list {
-  @include transition;
-  max-height: 0;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.accordion__items {
-  @include transition;
-  padding: 5px 20px;
-  @media screen and (max-width: $max_device_width_tablet) {
-    padding: 10px 20px;
-  }
-}
-
-.accordion__item {
-  padding: 7px 0;
-}
-
-.accordion__link {
-  display: block;
-  &:hover {
-    .accordion__link_name {
-      text-decoration: underline;
-    }
-  }
-}
-
-.accordion__date {
-  margin-left: 5px;
-  font-size: 12px;
-  color: $gray;
 }

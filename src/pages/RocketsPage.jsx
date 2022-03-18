@@ -1,7 +1,9 @@
 
 const RocketsPage = () => {
   return (
-    <div className="container">Rockets</div>
+    <section className="section">
+      <div className="container">Rockets</div>
+    </section>
   )
 }
 
