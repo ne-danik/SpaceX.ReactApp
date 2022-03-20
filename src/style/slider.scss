@@ -36,6 +36,7 @@
 }
 .slide__text-content {
   padding: 20px;
+  flex: 1 1 auto;
 }
 .slide__title {
   @include transition;
@@ -70,6 +71,7 @@
   color: $dark;
 }
 .slide__image {
+  flex: 0 0  auto;
   width: 160px;
   @media screen and (max-width: 570px) {
     width: 100%;

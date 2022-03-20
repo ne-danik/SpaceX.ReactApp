@@ -5,6 +5,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import useSpacexService from '../../services/useSpacexService';
 // utils
 import setContent from '../../utils/setContent';
+// components
+import { Skeleton } from '../Skeleton/Skeleton';
 // style
 import 'swiper/css';
 import '../../style/slider.scss';
@@ -26,7 +28,7 @@ const Landpads = () => {
       <div className="container">
         <h2 className="section__title">Landpads</h2>
         <div className="section__content">
-          {setContent(process, Slider, landpadsList)}
+          {setContent(process, Slider, landpadsList, CardSkeleton)}
         </div>
       </div>
     </section>
@@ -76,6 +78,49 @@ const Slider = ({ data }) => {
     >
       {items}
     </Swiper>
+  )
+}
+
+const CardSkeleton = () => {
+  return (
+    <div className="slider" style={{ display: 'flex' }}>
+      <div className="slide__wrapper" style={{ marginRight: '20px' }}>
+        <div className="slide">
+          <div className="slide__link">
+            <div className="slide__text-content">
+              <p className="slide__title"><Skeleton width="80%" /></p>
+              <p className="slide__meta"><Skeleton width="20%" /></p>
+              <p className="slide__desc">
+                <Skeleton />
+                <Skeleton />
+                <Skeleton width="80%" />
+              </p>
+            </div>
+            <div className="slide__image">
+              <Skeleton height="100%" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="slide__wrapper">
+        <div className="slide">
+          <div className="slide__link">
+            <div className="slide__text-content">
+              <p className="slide__title"><Skeleton width="80%" /></p>
+              <p className="slide__meta"><Skeleton width="20%" /></p>
+              <p className="slide__desc">
+                <Skeleton />
+                <Skeleton />
+                <Skeleton width="40%" />
+              </p>
+            </div>
+            <div className="slide__image">
+              <Skeleton height="100%" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

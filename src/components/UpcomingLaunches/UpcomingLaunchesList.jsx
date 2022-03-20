@@ -3,26 +3,13 @@ import { Link } from "react-router-dom";
 import moment from 'moment';
 // hooks
 import useSpacexService from "../../services/useSpacexService";
+// utils
+import setContent from "../../utils/setContent";
 // components
+import { Skeleton } from "../Skeleton/Skeleton";
 import Spinner from "../Spinner/Spinner";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
 // style
 import './launchesList.scss';
-
-const setContent = (process, Component, loadingMore) => {
-  switch (process) {
-    case 'waiting':
-      return <Spinner />
-    case 'loading':
-      return loadingMore ? <Component /> : <Spinner />
-    case 'success':
-      return <Component />
-    case 'failure':
-      return <ErrorMessage />
-    default:
-      throw new Error('Unexpected process state');
-  }
-}
 
 const UpcomingLaunchesList = () => {
   const [launchesList, setLaunchesList] = useState([]);
@@ -71,16 +58,12 @@ const UpcomingLaunchesList = () => {
     )
   }
 
-  const elements = useMemo(() => {
-    return setContent(process, () => renderCards(launchesList), loadingMore);
-  }, [process]);
-
   return (
     <section className="section launches">
       <div className="container">
         <h2 className="section__title">Upcoming launches</h2>
         <div className="section__content">
-          {elements}
+          {setContent(process, () => renderCards(launchesList), null, CardSkeleton, loadingMore)}
           {
             launchesList.length ? (
               <button
@@ -118,6 +101,37 @@ const Card = ({ data }) => {
           </svg>
         </p>
       </Link>
+    </div>
+  )
+}
+
+const CardSkeleton = () => {
+  return (
+    <div className="cards">
+      <div className="card card_launches">
+        <div className="card__link">
+          <p className="card__meta"><Skeleton width="20%" /></p>
+          <p className="card__title"><Skeleton width="60%" /></p>
+        </div>
+      </div>
+      <div className="card card_launches">
+        <div className="card__link">
+          <p className="card__meta"><Skeleton width="20%" /></p>
+          <p className="card__title"><Skeleton width="60%" /></p>
+        </div>
+      </div>
+      <div className="card card_launches">
+        <div className="card__link">
+          <p className="card__meta"><Skeleton width="20%" /></p>
+          <p className="card__title"><Skeleton width="60%" /></p>
+        </div>
+      </div>
+      <div className="card card_launches">
+        <div className="card__link">
+          <p className="card__meta"><Skeleton width="20%" /></p>
+          <p className="card__title"><Skeleton width="60%" /></p>
+        </div>
+      </div>
     </div>
   )
 }
