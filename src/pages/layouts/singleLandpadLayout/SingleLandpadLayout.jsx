@@ -11,7 +11,7 @@ const SingleLandpadLayout = ({ data }) => {
   const [launchesData, setLaunchesData] = useState([]);
   const [weatherData, setWeatherData] = useState([]);
 
-  const { name, region, locality, latitude, longitude, details, landingAttempts, landingSuccesses, launches, wikipedia, image } = data;
+  const { name, region, locality, latitude, longitude, details, status, landingAttempts, landingSuccesses, launches, wikipedia, image } = data;
 
   const { process, setProcess, clearError, getAllLaunches } = useSpacexService();
   const { wtProcess, wtSetProcess, wtClearError, getWeather } = useWeatherService();
@@ -72,6 +72,28 @@ const SingleLandpadLayout = ({ data }) => {
       list.style.maxHeight = null;
     } else {
       list.style.maxHeight = list.scrollHeight + "px";
+    }
+  }
+
+  const renderStatus = (status) => {
+    const styleClass = status.replace(" ", "-");
+    switch (status) {
+      case 'active':
+        return (
+          <p className={`article__status article__status--${styleClass}`}>{status}</p>
+        )
+      case 'under construction':
+        return (
+          <p className={`article__status article__status--${styleClass}`}>{status}</p>
+        )
+      case 'retired':
+        return (
+          <p className={`article__status article__status--${styleClass}`}>{status}</p>
+        )
+      default:
+        return (
+          <p className="article__status">{status}</p>
+        )
     }
   }
 
@@ -141,6 +163,7 @@ const SingleLandpadLayout = ({ data }) => {
         <div className="article__bg" style={{ backgroundImage: `url(${image})` }}>
           <div className="article__header">
             <div className="container">
+              {status ? renderStatus(status) : null}
               <h2 className="article__title">{name}</h2>
               <p className="article__subtitle">
                 <span>Region:</span>{region}

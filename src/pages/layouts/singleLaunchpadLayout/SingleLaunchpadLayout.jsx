@@ -12,7 +12,7 @@ const SingleLaunchpadLayout = ({ data }) => {
   const [weatherData, setWeatherData] = useState([]);
   const [roketsData, setRocketsData] = useState([]);
 
-  const { name, region, locality, latitude, longitude, details, launchAttempts, launchSuccesses, rockets, launches, image } = data;
+  const { name, region, locality, latitude, longitude, details, status, launchAttempts, launchSuccesses, rockets, launches, image } = data;
 
   const { process, setProcess, clearError, getAllLaunches, getAllRockets } = useSpacexService();
   const { wtProcess, wtSetProcess, wtClearError, getWeather } = useWeatherService();
@@ -127,9 +127,39 @@ const SingleLaunchpadLayout = ({ data }) => {
     )
   }
 
+  const renderStatus = (status) => {
+    const styleClass = status.replace(" ", "-");
+    switch (status) {
+      case 'active':
+        return (
+          <p className={`article__status article__status--${styleClass}`}>{status}</p>
+        )
+      case 'under construction':
+        return (
+          <p className={`article__status article__status--${styleClass}`}>{status}</p>
+        )
+      case 'retired':
+        return (
+          <p className={`article__status article__status--${styleClass}`}>{status}</p>
+        )
+      default:
+        return (
+          <p className="article__status">{status}</p>
+        )
+    }
+  }
+
   const renderRockets = (data) => {
     return (
-      data.map((item) => <Link key={item.id} to={`/rockets/${item.id}`}>{item.name}</Link>)
+      data.map((item) => {
+        const { id, name, images } = item;
+        return (
+          <Link key={id} to={`/rockets/${id}`} className="rocket-block">
+            <img className="rocket-block__image" src={images[0]} alt={name} />
+            <span className="rocket-block__title" >{name}</span>
+          </Link>
+        )
+      })
     )
   }
 
@@ -164,6 +194,7 @@ const SingleLaunchpadLayout = ({ data }) => {
         <div className="article__bg" style={{ backgroundImage: `url(${image})` }}>
           <div className="article__header">
             <div className="container">
+              {status ? renderStatus(status) : null}
               <h2 className="article__title">{name}</h2>
               <p className="article__subtitle">
                 <span>Region:</span>{region}
