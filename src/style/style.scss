@@ -208,3 +208,10 @@
   font-size: 12px;
   color: $gray;
 }
+
+.external-link {
+  &__icon {
+    margin-left: 2px;
+    vertical-align: top;
+  }
+}
