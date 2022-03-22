@@ -15,7 +15,7 @@ const LaunchesList = () => {
   const [offset, setOffset] = useState(0);
   const [countElements] = useState(4);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [laucnhesEnded, setLaunchesEnded] = useState(false);
+  const [launchesEnded, setLaunchesEnded] = useState(false);
 
   const { process, setProcess, clearError, getAllPastLaunches } = useSpacexService();
 
@@ -81,7 +81,7 @@ const LaunchesList = () => {
                 type="button"
                 onClick={() => onRequest()}
                 className="btn btn_blue_color"
-                style={{ 'display': laucnhesEnded ? 'none' : 'block' }}
+                style={{ 'display': launchesEnded ? 'none' : 'block' }}
                 disabled={loadingMore} >
                 {
                   loadingMore ? <Spinner size='18px' color='#ffffff' /> : 'Show more'

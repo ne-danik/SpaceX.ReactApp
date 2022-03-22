@@ -5,7 +5,8 @@
   position: relative;
   margin: 40px auto 40px auto;
   max-width: 575px;
-  
+  width: 100%;
+
   @media screen and (max-width: $max_device_width_mobile) {
     margin: 0 auto 20px auto;
   }
@@ -13,14 +14,14 @@
 
 .search__input {
   @include transition;
-  padding: 12px 48px;
+  padding: 12px 92px 12px 48px;
   border: 0;
   border-radius: 12px;
   background: $light;
   width: 100%;
   color: $dark;
   overflow: hidden;
-  
+
   &::placeholder {
     color: $dark;
   }
@@ -48,6 +49,11 @@
   user-select: none;
   cursor: pointer;
 
+  svg path,
+  svg rect {
+    fill: $dark;
+  }
+
   &:active {
     background: rgba($dark, 0.3);
   }
@@ -58,5 +64,21 @@
 
   &_filter {
     right: 8px;
+  }
+
+  &_reset {
+    right: 53px;
+    
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      right: -5px;
+      bottom: 0;
+      margin: auto 0;
+      width: 1px;
+      height: 24px;
+      background: rgba($dark, 0.3);
+    }
   }
 }
