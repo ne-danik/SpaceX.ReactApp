@@ -16,12 +16,11 @@ import SingleShipLayout from '../../pages/layouts/singleShipLayout/SingleShipLay
 
 import MainPageLayout from '../../pages/layouts/mainPageLayout/MainPageLayout';
 
-//const MainPageLayout = lazy(() => import('../../pages/layouts/mainPageLayout/MainPageLayout'));
 const MainPage = lazy(() => import('../../pages/MainPage'));
 const AboutPage = lazy(() => import('../../pages/aboutPage/AboutPage'));
 const HistoryPage = lazy(() => import('../../pages/HistoryPage'));
 const SinglePage = lazy(() => import('../../pages/SinglePage'));
-const CrewPage = lazy(() => import('../../pages/CrewPage'));
+const CrewPage = lazy(() => import('../../pages/crewPage/CrewPage'));
 const StarlinkPage = lazy(() => import('../../pages/StarlinkPage'));
 const DragonsPage = lazy(() => import('../../pages/DragonsPage'));
 const RocketsPage = lazy(() => import('../../pages/RocketsPage'));

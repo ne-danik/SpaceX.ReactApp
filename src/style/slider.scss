@@ -1,92 +1,12 @@
-@import "./varialebles.scss";
-@import "./mixins.scss";
-
 .slider {
   overflow: visible;
 }
+
 .slide__wrapper {
   width: 570px;
   height: auto;
+
   @media screen and (max-width: 570px) {
     width: 320px;
-  }
-}
-.slide {
-  display: flex;
-  height: 100%;
-}
-.slide__link {
-  @include transition;
-  display: flex;
-  border: 1px solid $light;
-  border-radius: 12px;
-  width: 100%;
-  background: $white;
-  overflow: hidden;
-  &:hover {
-    box-shadow: 0px 5px 20px -5px $light;
-  }
-  &:hover .slide__title {
-    color: $blue;
-  }
-  @media screen and (max-width: 570px) {
-    flex-direction: column-reverse;
-    justify-content: flex-end;
-  }
-}
-.slide__text-content {
-  padding: 20px;
-  flex: 1 1 auto;
-}
-.slide__title {
-  @include transition;
-  font-weight: 600;
-  font-size: 16px;
-  color: $black;
-}
-.slide__title-icon {
-  display: inline-block;
-  margin-bottom: 2px;
-  margin-left: 3px;
-  vertical-align: middle;
-  user-select: none;
-}
-.slide__meta {
-  margin: 10px 0;
-  font-size: 14px;
-  color: $gray;
-}
-.slide__desc {
-  display: -moz-box;
-  display: -webkit-box;
-  box-orient: vertical;
-  -moz-box-orient: vertical;
-  -webkit-box-orient: vertical;
-  line-clamp: 3;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 14px;
-  line-height: 180%;
-  color: $dark;
-}
-.slide__image {
-  flex: 0 0  auto;
-  width: 160px;
-  @media screen and (max-width: 570px) {
-    width: 100%;
-    height: 160px;
-  }
-  & img {
-    height: 100%;
-    width: 160px;
-    max-width: 160px;
-    object-fit: cover;
-    @media screen and (max-width: 570px) {
-      width: 100%;
-      max-width: 100%;
-      height: 160px;
-      max-height: 160px;
-    }
   }
 }

@@ -4,6 +4,19 @@
 @import "./mixins";
 @import "./global";
 
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 20px;
+  @media screen and (max-width: $max_device_width_tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: $max_device_width_mobile) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+  }
+}
+
 .btn {
   @include transition;
   display: block;

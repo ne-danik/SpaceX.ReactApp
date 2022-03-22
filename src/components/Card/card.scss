@@ -1,0 +1,125 @@
+@import "../../style/varialebles.scss";
+@import "../../style/mixins.scss";
+
+// Variants
+// default - 'text'
+// 'text-image'
+// 'image'
+
+.card {
+  @include transition;
+  position: relative;
+  display: flex;
+  border: 1px solid $light;
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  background: $white;
+  overflow: hidden;
+  &:hover {
+    box-shadow: 0px 5px 20px -5px $light;
+  }
+  &:hover .card__title {
+    color: $blue;
+  }
+}
+
+.card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  @media screen and (max-width: $max_device_width_mobile) {
+    gap: 5px;
+    padding: 15px;
+  }
+}
+
+.card__title {
+  @include transition;
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
+  color: $black;
+}
+
+.card__title-icon {
+  display: inline-block;
+  margin-bottom: 3px;
+  margin-left: 3px;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.card__desc {
+  display: -moz-box;
+  display: -webkit-box;
+  box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 180%;
+  color: $dark;
+}
+
+.card__meta {
+  font-size: 14px;
+  color: $gray;
+}
+
+// Variant
+// 'text-image'
+.card_text_image {
+  @media screen and (max-width: 570px) {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+  }
+  .card__image {
+    flex: 0 0 auto;
+    width: 160px;
+    @media screen and (max-width: 570px) {
+      width: 100%;
+      height: 160px;
+    }
+    .card__img {
+      object-fit: cover;
+      height: 100%;
+      width: 160px;
+      @media screen and (max-width: 570px) {
+        width: 100%;
+        max-width: 100%;
+        height: 160px;
+        max-height: 160px;
+      }
+    }
+  }
+}
+
+// Variant
+// 'image'
+.card_image {
+  flex-direction: column;
+  .card__image {
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+    .card__img {
+      @include transition;
+      object-fit: cover;
+      object-position: top;
+      width: 100%;
+      height: 360px;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}

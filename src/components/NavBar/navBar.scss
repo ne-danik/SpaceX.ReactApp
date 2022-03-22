@@ -8,6 +8,7 @@
 
 .navbar__link {
   @include transition;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,30 +17,57 @@
   background: #3c3c3c;
   width: 56px;
   height: 56px;
+  overflow: hidden;
 
   &:hover {
+    background: #0044ff;
     box-shadow: 0px 5px 20px -5px rgba($dark, 0.3);
+    .navbar__icon {
+      transform: scale(1);
+    }
+    .navbar__text {
+      bottom: 10px;
+      opacity: 1;
+    }
   }
 
   &.active {
     background: #0044ff;
     box-shadow: 0px 5px 20px -5px rgb(60 60 60 / 30%);
     cursor: default;
+    .navbar__icon {
+      transform: scale(1.4);
+      margin-bottom: 0;
+    }
+    .navbar__text {
+      bottom: 0;
+      opacity: 0;
+    }
   }
 }
 
 .navbar__link:not(:last-child) {
   margin-right: 40px;
-  
+
   @media screen and (max-width: $max_device_width_mobile) {
     margin-right: 20px;
   }
 }
 
+.navbar__icon {
+  @include transition;
+  margin-bottom: 12px;
+  transform: scale(1);
+}
+
 .navbar__text {
-  margin-top: 2px;
+  @include transition;
+  position: absolute;
+  content: "";
+  bottom: 10px;
   font-weight: 600;
   font-size: 8px;
   line-height: 10px;
   color: $white;
+  opacity: 1;
 }

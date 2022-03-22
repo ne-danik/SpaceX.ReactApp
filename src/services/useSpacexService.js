@@ -46,7 +46,79 @@ const useSpacexService = () => {
     }
   }
 
+  // Get Crew
+  const getAllCrewMembers = async () => {
+    const res = await request(`${_apiBase}/crew`);
+    return res.map(_transformCrew);
+  };
 
+  const getOneCrewMember = async (id) => {
+    const res = await request(`${_apiBase}/crew/${id}`);
+    return _transformCrew(res);
+  };
+
+  const _transformCrew = (member) => {
+    return {
+      id: member.id,
+      name: member.name,
+      agency: member.agency,
+      image: member.image,
+      wikipedia: member.wikipedia,
+      launches: member.launches
+    }
+  }
+
+  // Get Dragons
+  const getAllDragons = async () => {
+    const res = await request(`${_apiBase}/dragons`);
+    return res.map(_transformDragons);
+  };
+
+  const getOneDragon = async (id) => {
+    const res = await request(`${_apiBase}/dragons/${id}`);
+    return _transformDragons(res);
+  };
+
+  const _transformDragons = (dragon) => {
+    return {
+      id: dragon.id,
+      name: dragon.name,
+      type: dragon.type,
+      description: dragon.description,
+      first_flight: dragon.first_flight,
+      images: dragon.flickr_images,
+      wikipedia: dragon.wikipedia,
+    }
+  }
+
+  // Get Landpads
+  const getAllLandpads = async () => {
+    const res = await request(`${_apiBase}/landpads`);
+    return res.map(_transformLandpads);
+  };
+
+  const getOneLandpad = async (id) => {
+    const res = await request(`${_apiBase}/landpads/${id}`);
+    return _transformLandpads(res);
+  };
+
+  const _transformLandpads = (landpad) => {
+    return {
+      id: landpad.id,
+      name: landpad.full_name,
+      region: landpad.region,
+      locality: landpad.locality,
+      latitude: landpad.latitude,
+      longitude: landpad.longitude,
+      landingAttempts: landpad.landing_attempts,
+      landingSuccesses: landpad.landing_successes,
+      details: landpad.details,
+      status: landpad.status,
+      wikipedia: landpad.wikipedia,
+      launches: landpad.launches,
+      image: landpad.images.large[0],
+    }
+  }
 
   // Get Launches
   const getAllLaunches = async () => {
@@ -64,6 +136,11 @@ const useSpacexService = () => {
     return res.map(_transformLaunch);
   };
 
+  const getNextLaunch = async () => {
+    const res = await request(`${_apiBase}/launches/next`);
+    return _transformLaunch(res);
+  };
+
   const getOneLaunch = async (id) => {
     const res = await request(`${_apiBase}/launches/${id}`);
     return _transformLaunch(res);
@@ -73,9 +150,11 @@ const useSpacexService = () => {
     return {
       id: launch.id,
       name: launch.name,
+      flightNumber: launch.flight_number,
       date: launch.date_local,
       details: launch.details || 'No desription... ☹️',
-      patch: launch.links.patch.small || launch.links.patch.large,
+      patch_sm: launch.links.patch.small,
+      patch_lg: launch.links.patch.large,
       rocket: launch.rocket,
       launchpad: launch.launchpad,
       urlYoutube: launch.links.webcast,
@@ -109,100 +188,6 @@ const useSpacexService = () => {
       rockets: launchpad.rockets,
       launches: launchpad.launches,
       image: launchpad.images.large[0],
-    }
-  }
-
-  // Get Landpads
-  const getAllLandpads = async () => {
-    const res = await request(`${_apiBase}/landpads`);
-    return res.map(_transformLandpads);
-  };
-
-  const getOneLandpad = async (id) => {
-    const res = await request(`${_apiBase}/landpads/${id}`);
-    return _transformLandpads(res);
-  };
-
-  const _transformLandpads = (landpad) => {
-    return {
-      id: landpad.id,
-      name: landpad.full_name,
-      region: landpad.region,
-      locality: landpad.locality,
-      latitude: landpad.latitude,
-      longitude: landpad.longitude,
-      landingAttempts: landpad.landing_attempts,
-      landingSuccesses: landpad.landing_successes,
-      details: landpad.details,
-      status: landpad.status,
-      wikipedia: landpad.wikipedia,
-      launches: landpad.launches,
-      image: landpad.images.large[0],
-    }
-  }
-
-  // Get Crew
-  const getAllCrewMembers = async () => {
-    const res = await request(`${_apiBase}/crew`);
-    return res.map(_transformCrew);
-  };
-
-  const getOneCrewMember = async (id) => {
-    const res = await request(`${_apiBase}/crew/${id}`);
-    return _transformCrew(res);
-  };
-
-  const _transformCrew = (member) => {
-    return {
-      id: member.id,
-      name: member.name,
-      agency: member.agency,
-      image: member.image,
-      wikipedia: member.wikipedia,
-      launches: member.launches
-    }
-  }
-
-  // Get Starlink
-  const getAllStarlink = async () => {
-    const res = await request(`${_apiBase}/starlink`);
-    return res.map(_transformStarlink);
-  };
-
-  const getOneStarlink = async (id) => {
-    const res = await request(`${_apiBase}/starlink/${id}`);
-    return _transformStarlink(res);
-  };
-
-  const _transformStarlink = (sat) => {
-    return {
-      id: sat.id,
-      name: sat.spaceTrack.OBJECT_NAME,
-      version: sat.version,
-      launch: sat.launch,
-    }
-  }
-
-  // Get Dragons
-  const getAllDragons = async () => {
-    const res = await request(`${_apiBase}/dragons`);
-    return res.map(_transformDragons);
-  };
-
-  const getOneDragon = async (id) => {
-    const res = await request(`${_apiBase}/dragons/${id}`);
-    return _transformDragons(res);
-  };
-
-  const _transformDragons = (dragon) => {
-    return {
-      id: dragon.id,
-      name: dragon.name,
-      type: dragon.type,
-      description: dragon.description,
-      first_flight: dragon.first_flight,
-      images: dragon.flickr_images,
-      wikipedia: dragon.wikipedia,
     }
   }
 
@@ -253,6 +238,26 @@ const useSpacexService = () => {
     }
   }
 
+  // Get Starlink
+  const getAllStarlink = async () => {
+    const res = await request(`${_apiBase}/starlink`);
+    return res.map(_transformStarlink);
+  };
+
+  const getOneStarlink = async (id) => {
+    const res = await request(`${_apiBase}/starlink/${id}`);
+    return _transformStarlink(res);
+  };
+
+  const _transformStarlink = (sat) => {
+    return {
+      id: sat.id,
+      name: sat.spaceTrack.OBJECT_NAME,
+      version: sat.version,
+      launch: sat.launch,
+    }
+  }
+
   return {
     process,
     setProcess,
@@ -263,6 +268,7 @@ const useSpacexService = () => {
     getAllLaunches,
     getAllPastLaunches,
     getUpcomingLaunches,
+    getNextLaunch,
     getOneLaunch,
 
     getAllLaunchpads,
