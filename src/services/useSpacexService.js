@@ -152,7 +152,7 @@ const useSpacexService = () => {
       name: launch.name,
       flightNumber: launch.flight_number,
       date: launch.date_local,
-      details: launch.details || 'No desription... ☹️',
+      details: launch.details || 'No description... ☹️',
       patch_sm: launch.links.patch.small,
       patch_lg: launch.links.patch.large,
       rocket: launch.rocket,
