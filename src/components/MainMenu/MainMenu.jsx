@@ -1,39 +1,39 @@
-import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+// context
+import { MenuContext } from '../../context/menuState';
 // styles
 import './mainMenu.scss';
 
+const menuLinks = [
+  { name: 'Home', url: '' },
+  { name: 'About', url: 'about' },
+  { name: 'History', url: 'history' },
+]
+
 const NavBar = () => {
+  const { isMenuOpen, onToggleMenu } = useContext(MenuContext);
+  const isLocSearch = useLocation().search;
+
+  const linksElements = menuLinks.map((link, idx) => {
+    return (
+      <li key={idx} className="nav__item">
+        <NavLink
+          to={`/${link.url}`}
+          onClick={isMenuOpen ? onToggleMenu : null}
+          className={({ isActive }) => ("nav__link" + (isActive && !isLocSearch ? " active" : ""))}
+        >
+          {link.name}
+        </NavLink>
+      </li>
+    )
+  })
+
   return (
     <div className="menu">
       <nav className="menu__nav nav">
         <ul className="nav__list">
-          <li className="nav__item">
-            <NavLink
-              end
-              to="/"
-              className={({ isActive }) => ("nav__link" + (isActive ? " active" : ""))}
-            >
-              Home
-            </NavLink>
-          </li>
-          <li className="nav__item">
-            <NavLink
-              end
-              to="/about"
-              className={({ isActive }) => ("nav__link" + (isActive ? " active" : ""))}
-            >
-              About
-            </NavLink>
-          </li>
-          <li className="nav__item">
-            <NavLink
-              end
-              to="/history"
-              className={({ isActive }) => ("nav__link" + (isActive ? " active" : ""))}
-            >
-              History
-            </NavLink>
-          </li>
+          {linksElements}
         </ul>
       </nav>
     </div>

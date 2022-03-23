@@ -3,23 +3,23 @@ import './card.scss';
 // resources
 import { ReactComponent as LinkIcon } from '../../resources/icons/link.svg';
 
-export const Card = ({ children, variant }) => {
+export const Card = ({ children, variant, className }) => {
   switch (variant) {
     case 'text-image':
       return (
-        <div className="card card_text_image">
+        <div className={`card card_text_image ${className}`}>
           {children}
         </div>
       )
     case 'image':
       return (
-        <div className="card card_image">
+        <div className={`card card_image ${className}`}>
           {children}
         </div>
       )
     default:
       return (
-        <div className="card">
+        <div className={`card ${className}`}>
           {children}
         </div>
       )

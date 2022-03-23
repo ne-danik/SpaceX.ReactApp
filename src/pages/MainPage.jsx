@@ -23,6 +23,7 @@ const MainPage = () => {
       <Search
         searchValue={searchValue}
         setSearchParams={setSearchParams}
+        placeholder={'Search launches...'}
       />
       {searchValue.length ? (
         <SearchLaunches

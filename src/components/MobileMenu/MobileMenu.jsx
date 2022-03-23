@@ -1,50 +1,44 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// context
+import { MenuContext } from '../../context/menuState';
 // styles
 import './mobileMenu.scss';
 
-const MobileMenu = (props) => {
+const menuLinks = [
+  { name: 'Home', url: '' },
+  { name: 'About', url: 'about' },
+  { name: 'History', url: 'history' },
+]
+
+const MobileMenu = () => {
+  const { isMenuOpen, onToggleMenu } = useContext(MenuContext);
+
+  console.log()
 
   useEffect(() => {
     renderMobileMenu();
-  }, [props.open])
+  }, [isMenuOpen])
 
   const renderMobileMenu = () => {
+    const linksElements = menuLinks.map((link, idx) => {
+      return (
+        <li key={idx} className="side-nav__item">
+          <NavLink
+            to={`/${link.url}`}
+            onClick={isMenuOpen ? onToggleMenu : null}
+            className={({ isActive }) => ("side-nav__link" + (isActive ? " active" : ""))}
+          >
+            {link.name}
+          </NavLink>
+        </li>
+      )
+    })
     return (
-      <div className={'side-menu_overlay' + (props.open ? ' open' : '')} >
+      <div className={'side-menu_overlay' + (isMenuOpen ? ' open' : '')} >
         <nav className="side-menu">
           <ul className="side-nav__list">
-            <li className="side-nav__item">
-              <NavLink
-                end
-                to="/"
-                onClick={() => props.onToggleMenu(!props.open)}
-                className={({ isActive }) => ("side-nav__link" + (isActive ? " active" : ""))}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="side-nav__item">
-              <NavLink
-                end
-                to="/about"
-                onClick={() => props.onToggleMenu(!props.open)}
-                className={({ isActive }) => ("side-nav__link" + (isActive ? " active" : ""))}
-              >
-                About
-              </NavLink>
-            </li>
-            <li className="side-nav__item">
-              <NavLink
-                end
-                to="/history"
-                onClick={() => props.onToggleMenu(!props.open)}
-                className={({ isActive }) => ("side-nav__link" + (isActive ? " active" : ""))}
-              >
-                History
-              </NavLink>
-            </li>
+            {linksElements}
           </ul>
         </nav>
       </div >
@@ -56,11 +50,6 @@ const MobileMenu = (props) => {
       {renderMobileMenu()}
     </>
   )
-}
-
-MobileMenu.propTypes = {
-  open: PropTypes.bool,
-  onToggleMenu: PropTypes.func
 }
 
 export default MobileMenu;

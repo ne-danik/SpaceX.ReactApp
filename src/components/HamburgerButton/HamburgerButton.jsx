@@ -1,24 +1,23 @@
-import PropTypes from 'prop-types';
+import { useContext } from 'react';
+// context
+import { MenuContext } from '../../context/menuState';
 // styles
 import './hamburgerButton.scss';
 
-const HamburgerButton = (props) => {
+const HamburgerButton = () => {
+  const { isMenuOpen, onToggleMenu } = useContext(MenuContext);
+  
   return (
     <button
-      onClick={() => props.onToggleMenu(!props.isMenuOpen)}
-      className={'burger' + (props.isMenuOpen ? ' active' : '')}
-      aria-label="Открыть главное меню"
+      onClick={onToggleMenu}
+      className={'burger' + (isMenuOpen ? ' active' : '')}
+      aria-label="Open menu"
     >
       <span></span>
       <span></span>
       <span></span>
     </button>
   )
-}
-
-HamburgerButton.propTypes = {
-  onToggleMenu: PropTypes.func,
-  isMenuOpen: PropTypes.bool
 }
 
 export default HamburgerButton;

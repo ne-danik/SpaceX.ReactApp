@@ -8,6 +8,8 @@ import setContent from "../../utils/setContent";
 import Spinner from "../../components/Spinner/Spinner";
 import { Skeleton } from "../../components/Skeleton/Skeleton";
 import { Card, CardContent, CardTitle, CardMeta, CardImg } from '../../components/Card/Card';
+// styles
+import './crewPage.scss';
 
 const CrewPage = () => {
   const [crewList, setCrewList] = useState([]);
@@ -51,7 +53,7 @@ const CrewPage = () => {
       const { id, name, image, agency } = item;
       return (
         <Link key={id} to={`/crew/${id}`}>
-          <Card variant='image'>
+          <Card variant='image' className='crew'>
             <CardImg urlImage={image} altImage={name} />
             <CardContent>
               <CardTitle content={name} />
@@ -73,7 +75,7 @@ const CrewPage = () => {
       <section className="section">
         <div className="container">
           <h2 className="section__title">Crew</h2>
-          <div className="div">
+          <div className="section__content">
             {setContent(process, () => renderList(crewList), null, CardSkeleton, loadingMore)}
             {
               crewList.length ? (
@@ -99,56 +101,56 @@ const CrewPage = () => {
 const CardSkeleton = () => {
   return (
     <div className="cards">
-      <Card variant='image'>
+      <Card variant='image' className='crew'>
         <CardImg content={<Skeleton height="100%" />} />
         <CardContent>
           <CardTitle content={<Skeleton width="60%" />} noLinkIcon />
           <CardMeta content={<Skeleton width="30%" />} />
         </CardContent>
       </Card>
-      <Card variant='image'>
+      <Card variant='image' className='crew'>
         <CardImg content={<Skeleton height="100%" />} />
         <CardContent>
           <CardTitle content={<Skeleton width="60%" />} noLinkIcon />
           <CardMeta content={<Skeleton width="30%" />} />
         </CardContent>
       </Card>
-      <Card variant='image'>
+      <Card variant='image' className='crew'>
         <CardImg content={<Skeleton height="100%" />} />
         <CardContent>
           <CardTitle content={<Skeleton width="60%" />} noLinkIcon />
           <CardMeta content={<Skeleton width="30%" />} />
         </CardContent>
       </Card>
-      <Card variant='image'>
+      <Card variant='image' className='crew'>
         <CardImg content={<Skeleton height="100%" />} />
         <CardContent>
           <CardTitle content={<Skeleton width="60%" />} noLinkIcon />
           <CardMeta content={<Skeleton width="30%" />} />
         </CardContent>
       </Card>
-      <Card variant='image'>
+      <Card variant='image' className='crew'>
         <CardImg content={<Skeleton height="100%" />} />
         <CardContent>
           <CardTitle content={<Skeleton width="60%" />} noLinkIcon />
           <CardMeta content={<Skeleton width="30%" />} />
         </CardContent>
       </Card>
-      <Card variant='image'>
+      <Card variant='image' className='crew'>
         <CardImg content={<Skeleton height="100%" />} />
         <CardContent>
           <CardTitle content={<Skeleton width="60%" />} noLinkIcon />
           <CardMeta content={<Skeleton width="30%" />} />
         </CardContent>
       </Card>
-      <Card variant='image'>
+      <Card variant='image' className='crew'>
         <CardImg content={<Skeleton height="100%" />} />
         <CardContent>
           <CardTitle content={<Skeleton width="60%" />} noLinkIcon />
           <CardMeta content={<Skeleton width="30%" />} />
         </CardContent>
       </Card>
-      <Card variant='image'>
+      <Card variant='image' className='crew'>
         <CardImg content={<Skeleton height="100%" />} />
         <CardContent>
           <CardTitle content={<Skeleton width="60%" />} noLinkIcon />

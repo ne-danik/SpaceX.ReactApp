@@ -1,0 +1,41 @@
+@import "../../style/varialebles.scss";
+
+.logo {
+}
+
+.logo__link {
+  display: flex;
+  align-items: flex-end;
+}
+
+.logo__img {
+  width: 120px;
+  height: 45px;
+}
+
+.logo__text-block {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  padding-top: 4px;
+  padding-right: 16px;
+  margin-bottom: 6px;
+}
+
+.logo__text {
+  font-weight: 400;
+  font-size: 16px;
+  color: $dark;
+}
+
+.logo__text span {
+  font-size: 10px;
+  color: $gray;
+}
+
+.logo__text__icon {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+}

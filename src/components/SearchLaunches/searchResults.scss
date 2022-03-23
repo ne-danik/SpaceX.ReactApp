@@ -1,0 +1,10 @@
+@import "../../style/varialebles.scss";
+
+.result {
+  padding: 20px 0 10px 10px;
+  border-bottom: 1px solid $light;
+}
+
+.result__link {
+  font-weight: 600;
+}

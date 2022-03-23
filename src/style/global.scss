@@ -30,28 +30,42 @@ body {
   padding: 0 20px;
   width: 100%;
   max-width: 1200px;
-  
+
   @media screen and (max-width: 1239px) {
     max-width: 100%;
   }
 }
 
 .section {
-  margin-top: 80px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 
   @media screen and (max-width: $max_device_width_mobile) {
     margin-top: 40px;
+    margin-bottom: 20px;
   }
 }
 
 .section__title {
-  margin-bottom: 40px;
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 100%;
   font-weight: 500;
   font-size: 24px;
+}
 
+.section__subtitle {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 14px;
+  
   @media screen and (max-width: $max_device_width_mobile) {
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
+}
+
+.section__content {
+  margin-top: 20px;
 }
 
 a {

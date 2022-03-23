@@ -4,7 +4,7 @@ import './search.scss';
 // resources
 import { ReactComponent as ResetInput } from '../../resources/icons/close.svg';
 
-const Search = ({ searchValue, setSearchParams }) => {
+const Search = ({ searchValue, setSearchParams, placeholder = 'search...' }) => {
   const [stateSearch, setStateSearch] = useState(searchValue);
 
   const params = {
@@ -38,7 +38,7 @@ const Search = ({ searchValue, setSearchParams }) => {
         <input
           type="text"
           name="search"
-          placeholder="search..."
+          placeholder={placeholder}
           value={stateSearch}
           onChange={handleChangeSearch}
           className="search__input"
