@@ -211,7 +211,8 @@ const useSpacexService = () => {
       description: rocket.description,
       firstFlight: rocket.first_flight,
       wiki: rocket.wikipedia,
-      images: rocket.flickr_images.map(item => item),
+      images: rocket.flickr_images,
+      status: rocket.active,
     }
   }
 
@@ -232,9 +233,11 @@ const useSpacexService = () => {
       name: ship.name,
       type: ship.type,
       port: ship.home_port,
+      image: ship.image,
       weight: ship.mass_kg,
       year: ship.year_built,
-      launches: ship.launches.map(item => item),
+      launches: ship.launches,
+      status: ship.active,
     }
   }
 

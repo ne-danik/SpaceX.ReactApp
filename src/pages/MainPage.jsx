@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 // components
 import Landpads from "../components/Landpads/Landpads";
@@ -7,12 +7,11 @@ import UpcomingLaunchesList from "../components/UpcomingLaunches/UpcomingLaunche
 import Launchpads from "../components/Launchpads/Launchpads";
 import NextLaunch from "../components/NextLaunch/NextLaunch";
 import Search from "../components/Search/Search";
-import SearchLaunches from '../components/SearchLaunches/SearchLaunches';
+import SearchResultLaunches from '../components/SearchResultLaunches/SearchResultLaunches';
 
 const MainPage = () => {
   const [searchParams, setSearchParams] = useSearchParams('');
-
-  const searchValue = searchParams.get('name') || '';
+  const [searchValue, setSearchValue] = useState(searchParams.get('name') || '');
 
   useEffect(() => {
     if (searchParams.get('name') === "") setSearchParams('');
@@ -22,16 +21,11 @@ const MainPage = () => {
     <>
       <Search
         searchValue={searchValue}
+        setSearchValue={setSearchValue}
         setSearchParams={setSearchParams}
         placeholder={'Search launches...'}
       />
-      {searchValue.length ? (
-        <SearchLaunches
-          launchName={searchValue}
-          setSearchParams={setSearchParams}
-          searchParams={searchParams}
-        />
-      ) : (
+      {searchValue.length ? <SearchResultLaunches searchValue={searchValue} /> : (
         <>
           <NextLaunch />
           <UpcomingLaunchesList />

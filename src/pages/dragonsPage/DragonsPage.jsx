@@ -2,12 +2,12 @@
 import { useSearch } from "../../hooks/useSearch";
 // components
 import Search from "../../components/Search/Search";
-import CrewList from "../../components/CrewList/CrewList";
-import SearchResultCrew from "../../components/SearchResultCrew/SearchResultCrew";
+import DragonsList from "../../components/DragonsList/DragonsList";
+import SearchResultDragons from "../../components/SearchResultDragons/SearchResultDragons";
 // styles
-import './crewPage.scss';
+import './dragonsPage.scss';
 
-const CrewPage = ({ data }) => {
+const DragonsPage = ({ data }) => {
   const { searchValue, setSearchValue, setSearchParams, foundData } = useSearch(data, 'name');
 
   return (
@@ -16,16 +16,16 @@ const CrewPage = ({ data }) => {
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         setSearchParams={setSearchParams}
-        placeholder={'Search member...'}
+        placeholder={'Search dragon...'}
       />
 
       {searchValue.length ? (
-        <SearchResultCrew data={foundData} searchValue={searchValue} />
+        <SearchResultDragons data={foundData} searchValue={searchValue} />
       ) : (
-        <CrewList data={foundData} />
+        <DragonsList data={foundData} />
       )}
     </>
   )
 }
 
-export default CrewPage;
+export default DragonsPage;

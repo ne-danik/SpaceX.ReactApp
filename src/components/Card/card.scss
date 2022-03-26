@@ -121,9 +121,9 @@
       object-position: top;
       width: 100%;
       height: 360px;
-      &:hover {
-        transform: scale(1.05);
-      }
     }
+  }
+  &:hover .card__img {
+    transform: scale(1.05);
   }
 }

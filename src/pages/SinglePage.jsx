@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
+//services
 import useSpacexService from '../services/useSpacexService';
+// utils
 import setContent from '../utils/setContent';
 
 const SinglePage = ({ Component, dataType }) => {

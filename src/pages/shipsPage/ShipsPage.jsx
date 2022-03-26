@@ -2,12 +2,12 @@
 import { useSearch } from "../../hooks/useSearch";
 // components
 import Search from "../../components/Search/Search";
-import CrewList from "../../components/CrewList/CrewList";
-import SearchResultCrew from "../../components/SearchResultCrew/SearchResultCrew";
+import ShipsList from "../../components/ShipsList/ShipsList";
+import SearchResultShips from "../../components/SearchResultShips/SearchResultShips";
 // styles
-import './crewPage.scss';
+import './shipsPage.scss';
 
-const CrewPage = ({ data }) => {
+const ShipsPage = ({ data }) => {
   const { searchValue, setSearchValue, setSearchParams, foundData } = useSearch(data, 'name');
 
   return (
@@ -16,16 +16,16 @@ const CrewPage = ({ data }) => {
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         setSearchParams={setSearchParams}
-        placeholder={'Search member...'}
+        placeholder={'Search ship...'}
       />
 
       {searchValue.length ? (
-        <SearchResultCrew data={foundData} searchValue={searchValue} />
+        <SearchResultShips data={foundData} searchValue={searchValue} />
       ) : (
-        <CrewList data={foundData} />
+        <ShipsList data={foundData} />
       )}
     </>
   )
 }
 
-export default CrewPage;
+export default ShipsPage;

@@ -8,14 +8,14 @@ import setContent from "../../utils/setContent";
 // components
 import { Card, CardContent, CardTitle, CardMeta } from '../Card/Card';
 import { Skeleton } from "../Skeleton/Skeleton";
-import Spinner from "../Spinner/Spinner";
+import Button from "../Button/Button";
 
 const LaunchesList = () => {
-  const [launchesList, setLaunchesList] = useState([]);
+  const [dataList, setDataList] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [countElements] = useState(4);
+  const [limit] = useState(4);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [launchesEnded, setLaunchesEnded] = useState(false);
+  const [dataEnded, setDataEnded] = useState(false);
 
   const { process, setProcess, clearError, getAllPastLaunches } = useSpacexService();
 
@@ -35,17 +35,17 @@ const LaunchesList = () => {
 
   const onLaunchesListLoaded = (data) => {
     const reverse = data.reverse();
-    const currentSampling = reverse.slice(offset, offset + countElements);
+    const currentSampling = reverse.slice(offset, offset + limit);
 
-    let launchesEndedTrigger = false;
-    if (currentSampling.length < countElements) {
-      launchesEndedTrigger = true;
+    let endedTrigger = false;
+    if (currentSampling.length < limit) {
+      endedTrigger = true;
     }
 
-    setLaunchesList(launchesList => [...launchesList, ...currentSampling]);
-    setOffset(offset => offset + countElements);
+    setDataList(dataList => [...dataList, ...currentSampling]);
+    setOffset(offset => offset + limit);
     setLoadingMore(false);
-    setLaunchesEnded(launchesEndedTrigger);
+    setDataEnded(endedTrigger);
   }
 
   const renderCards = (data) => {
@@ -74,20 +74,9 @@ const LaunchesList = () => {
       <div className="container">
         <h2 className="section__title">Latest launches</h2>
         <div className="section__content">
-          {setContent(process, () => renderCards(launchesList), null, CardSkeleton, loadingMore)}
+          {setContent(process, () => renderCards(dataList), null, CardSkeleton, loadingMore)}
           {
-            launchesList.length ? (
-              <button
-                type="button"
-                onClick={() => onRequest()}
-                className="btn btn_blue_color"
-                style={{ 'display': launchesEnded ? 'none' : 'block' }}
-                disabled={loadingMore} >
-                {
-                  loadingMore ? <Spinner size='18px' color='#ffffff' /> : 'Show more'
-                }
-              </button>
-            ) : null
+            dataEnded ? null : <Button title="Show more" action={() => onRequest()} isNone={dataEnded} disabled={loadingMore} />
           }
         </div>
       </div>

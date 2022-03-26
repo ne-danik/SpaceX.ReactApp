@@ -2,12 +2,10 @@
 import { useSearch } from "../../hooks/useSearch";
 // components
 import Search from "../../components/Search/Search";
-import CrewList from "../../components/CrewList/CrewList";
-import SearchResultCrew from "../../components/SearchResultCrew/SearchResultCrew";
-// styles
-import './crewPage.scss';
+import StarlinkList from "../../components/StarlinkList/StarlinkList";
+import SearchResultStarlink from "../../components/SearchResultStarlink/SearchResultStarlink";
 
-const CrewPage = ({ data }) => {
+const StarlinkPage = ({ data }) => {
   const { searchValue, setSearchValue, setSearchParams, foundData } = useSearch(data, 'name');
 
   return (
@@ -16,16 +14,16 @@ const CrewPage = ({ data }) => {
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         setSearchParams={setSearchParams}
-        placeholder={'Search member...'}
+        placeholder={'Search starlink...'}
       />
 
       {searchValue.length ? (
-        <SearchResultCrew data={foundData} searchValue={searchValue} />
+        <SearchResultStarlink data={foundData} searchValue={searchValue} />
       ) : (
-        <CrewList data={foundData} />
+        <StarlinkList data={foundData} />
       )}
     </>
   )
 }
 
-export default CrewPage;
+export default StarlinkPage;
