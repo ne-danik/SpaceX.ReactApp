@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import AppHeader from '../AppHeader/AppHeader';
 import AppFooter from '../AppFooter/AppFooter';
-
+// single layouts
 import SingleCrewLayout from '../../pages/layouts/single/singleCrewLayout/SingleCrewLayout';
 import SingleLaunchLayout from '../../pages/layouts/single/singleLaunchLayout/SingleLaunchLayout';
 import SingleLaunchpadLayout from '../../pages/layouts/single/singleLaunchpadLayout/SingleLaunchpadLayout';
@@ -12,7 +12,8 @@ import SingleDragonLayout from '../../pages/layouts/single/singleDragonLayout/Si
 import SingleRocketLayout from '../../pages/layouts/single/singleRocketLayout/SingleRocketLayout';
 import SingleShipLayout from '../../pages/layouts/single/singleShipLayout/SingleShipLayout';
 
-import MainPageLayout from '../../pages/layouts/categories/MainPageLayout';
+import MainPageLayout from '../../pages/layouts/MainPageLayout';
+// categories layouts
 import CrewPageLayout from '../../pages/layouts/categories/CrewPageLayout';
 import StarlinkPageLayout from '../../pages/layouts/categories/StarlinkPageLayout';
 import DragonsPageLayout from '../../pages/layouts/categories/DragonsPageLayout';
