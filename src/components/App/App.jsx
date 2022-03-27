@@ -66,15 +66,14 @@ const App = () => {
             <Route index element={<CategoryPage Component={ShipsPage} dataType='ships' />} />
             <Route path=':id' element={<SinglePage Component={SingleShipLayout} dataType='ship' />} />
           </Route>
+
+          <Route path='/launches/:id' element={<SinglePage Component={SingleLaunchLayout} dataType='launch' />} />
+          <Route path='/launchpads/:id' element={<SinglePage Component={SingleLaunchpadLayout} dataType='launchpad' />} />
+          <Route path='/landpads/:id' element={<SinglePage Component={SingleLandpadLayout} dataType='landpad' />} />
         </Route>
 
         <Route path='/about' element={<AboutPage />} />
         <Route path='/history' element={<HistoryPage />} />
-
-        <Route path='/launches/:id' element={<SinglePage Component={SingleLaunchLayout} dataType='launch' />} />
-        <Route path='/launchpads/:id' element={<SinglePage Component={SingleLaunchpadLayout} dataType='launchpad' />} />
-        <Route path='/landpads/:id' element={<SinglePage Component={SingleLandpadLayout} dataType='landpad' />} />
-
         <Route path='*' element={<NotFoundPage />} />
       </Routes >
 

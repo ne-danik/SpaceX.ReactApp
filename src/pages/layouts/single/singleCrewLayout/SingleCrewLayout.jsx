@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 // services
 import useSpacexService from '../../../../services/useSpacexService';
@@ -33,10 +34,10 @@ const SingleCrewLayout = ({ data }) => {
       data.map((item) => {
         return (
           <li key={item.id} className="profile__launches-item">
-            <a className="profile__launches-link" href={`/launches/${item.id}`}>
+            <Link className="profile__launches-link" to={`/launches/${item.id}`}>
               <span className="profile__launches-name">{item.name}</span>
               <span className="profile__launches-date">{moment(item.date).format('MMM DD')}</span>
-            </a>
+            </Link>
           </li>
         )
       })
@@ -75,11 +76,11 @@ const SingleCrewLayout = ({ data }) => {
         <CrumbLabel label="Crew" />
       </Breadcrumbs>
 
-      <article className="profile">
+      <article className="article">
         <div className="container">
-          <div className="profile__inner">
-            <h2 className="profile__title">{name}</h2>
-            <div className="profile__content">
+          <div className="article__inner">
+            <h2 className="article__title">{name}</h2>
+            <div className="article__content profile">
               <div className="profile__left">
                 <img className='profile__avatar' src={image} alt={name} />
                 <div className="profile__social">
@@ -92,13 +93,13 @@ const SingleCrewLayout = ({ data }) => {
                 </div>
               </div>
               <div className="profile__right">
-                <div className="profile__field">
+                <div className="article__text">
                   Career status: <span className="profile__status">{status}</span>
                 </div>
-                <div className="profile__field">
+                <div className="article__text">
                   Agency: {renderAgency(agency)}
                 </div>
-                <div className="profile__field">
+                <div className="article__text">
                   Launches: {setContent(process, () => renderLaunches(launchesList), null, LaunchesSkeleton)}
                 </div>
               </div>
@@ -111,7 +112,11 @@ const SingleCrewLayout = ({ data }) => {
 }
 
 const LaunchesSkeleton = () => {
-  return <Skeleton width="200px" />
+  return (
+    <div className="article__text">
+      <Skeleton width="200px" />
+    </div>
+  )
 }
 
 export default SingleCrewLayout

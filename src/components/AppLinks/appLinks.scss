@@ -1,15 +1,19 @@
 @import "../../style/varialebles.scss";
+@import "../../style/mixins.scss";
 
 .external__link,
 .internal__link {
+  @include transition;
+  color: $dark;
+  font-weight: 600;
   path {
-    fill: #0044ff;
+    fill: $blue;
   }
 }
 
 .external__link:hover,
 .internal__link:hover {
-  text-decoration: underline;
+  color: $blue;
 }
 
 .external__icon {

@@ -1,0 +1,43 @@
+@import "../../../../style/varialebles.scss";
+
+.ship {
+  display: flex;
+
+  @media screen and (max-width: $max_device_width_mobile) {
+    flex-direction: column-reverse;
+  }
+}
+
+.ship__left,
+.ship__right {
+  flex: 1 1 50%;
+}
+
+.ship__img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  object-position: top;
+
+  @media screen and (max-width: $max_device_width_mobile) {
+    margin-bottom: 40px;
+  }
+}
+
+.ship__launches-item {
+  padding: 7px 20px;
+}
+
+.ship__launches-link {
+  display: inline-block;
+
+  &:hover > .ship__launches-name {
+    text-decoration: underline;
+  }
+}
+
+.ship__launches-date {
+  margin-left: 5px;
+  font-size: 12px;
+  color: #828282;
+}

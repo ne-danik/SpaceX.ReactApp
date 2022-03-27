@@ -12,8 +12,6 @@ import { Card, CardContent, CardTitle, CardMeta, CardImg } from '../../../../com
 import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../../components/Breadcrumbs/Breadcrumbs';
 import { Status } from '../../../../components/Status/Status';
 import { ExternalLink } from '../../../../components/AppLinks/AppLinks';
-// styles
-import './singleLaunchpadLayout.scss';
 
 const SingleLaunchpadLayout = ({ data }) => {
   const [launchesData, setLaunchesData] = useState([]);
@@ -172,34 +170,34 @@ const SingleLaunchpadLayout = ({ data }) => {
         <CrumbLabel label="Launchpad" />
       </Breadcrumbs>
 
-      <article className="article">
-        <div className="article__bg" style={{ backgroundImage: `url(${image})` }}>
-          <div className="article__header">
+      <article className="article hero">
+        <div className="hero__bg" style={{ backgroundImage: `url(${image})` }}>
+          <div className="hero__content">
             <div className="container">
               {status ? <Status status={status} style={{ marginBottom: '24px' }} /> : <Skeleton width="40px" />}
-              <h2 className="article__title">
+              <h2 className="hero__title">
                 {name ? name : <Skeleton width="50%" />}
               </h2>
-              <p className="article__subtitle">
+              <p className="hero__text-block">
                 <span>Region:</span>
                 {region ? region : <Skeleton width="100px" />}
               </p>
-              <p className="article__subtitle">
+              <p className="hero__text-block">
                 <span>Locality:</span>
                 {locality ? (
-                  <ExternalLink url={`https://www.google.com/maps?ll=${latitude},${longitude}`} className="article__locate_link" label={locality} iconHeight="12px" iconWidth="12px" />
+                  <ExternalLink url={`https://www.google.com/maps?ll=${latitude},${longitude}`} className="hero__link" label={locality} iconHeight="12px" iconWidth="12px" />
                 ) : <Skeleton width="100px" />}
               </p>
-              <p className="article__subtitle">
+              <p className="hero__text-block">
                 <span>Weather:</span>
                 {weatherData.weather ? weatherData.weather : <Skeleton width="60px" />}
                 {weatherData.tempC ? ', ' + weatherData.tempC : <Skeleton width="30px" />}
               </p>
-              <p className="article__subtitle">
+              <p className="hero__text-block">
                 <span>Wind:</span>
                 {weatherData.wind ? weatherData.wind : <Skeleton width="60px" />}
               </p>
-              <div className="article__statistics">
+              <div className="hero__statistics">
                 <div className="statistic_box">
                   <span className="number">
                     {String(launchAttempts).length ? launchAttempts : <Skeleton width="100px" />}

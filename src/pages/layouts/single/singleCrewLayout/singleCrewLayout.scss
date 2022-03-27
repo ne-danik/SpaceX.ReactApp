@@ -1,18 +1,6 @@
 @import "../../../../style/varialebles.scss";
 
-.profile__inner {
-  border: 1px solid #f0f0f0;
-  border-radius: 12px;
-  padding: 20px;
-}
-
-.profile__title {
-  font-size: 36px;
-  font-weight: 400;
-  margin-bottom: 20px;
-}
-
-.profile__content {
+.profile {
   display: flex;
   gap: 0 80px;
 
@@ -27,9 +15,6 @@
   }
 }
 
-.profile__right {
-}
-
 .profile__avatar {
   width: 300px;
   height: 300px;
@@ -41,13 +26,6 @@
   }
 }
 
-.profile__field {
-  margin-bottom: 20px;
-  & > span {
-    font-weight: 600;
-  }
-}
-
 .profile__status {
   text-transform: capitalize;
 }
@@ -56,18 +34,16 @@
   margin-top: 40px;
 }
 
-.profile__launches-items {
-}
-
 .profile__launches-item {
   padding: 7px 20px;
 }
 
 .profile__launches-link {
   display: inline-block;
-}
-
-.profile__launches-name {
+  
+  &:hover > .profile__launches-name {
+    text-decoration: underline;
+  }
 }
 
 .profile__launches-date {

@@ -86,9 +86,14 @@ const useSpacexService = () => {
       name: dragon.name,
       type: dragon.type,
       description: dragon.description,
-      first_flight: dragon.first_flight,
+      firstFlight: dragon.first_flight,
       images: dragon.flickr_images,
       wikipedia: dragon.wikipedia,
+      status: String(dragon.active),
+      crewCapacity: String(dragon.crew_capacity),
+      height: String(dragon.height_w_trunk.meters),
+      diameter: String(dragon.diameter.meters),
+      payloadMass: String(dragon.launch_payload_mass.kg),
     }
   }
 
@@ -209,11 +214,19 @@ const useSpacexService = () => {
       name: rocket.name,
       type: rocket.type,
       country: rocket.country,
+      company: rocket.company,
       description: rocket.description,
       firstFlight: rocket.first_flight,
-      wiki: rocket.wikipedia,
+      height: String(rocket.height.meters),
+      diameter: String(rocket.diameter.meters),
+      mass: String(rocket.mass.kg),
+      stages: String(rocket.stages),
+      status: String(rocket.active),
+      successRate: String(rocket.success_rate_pct),
+      cost: String(rocket.cost_per_launch),
+      payloadWeights: rocket.payload_weights,
       images: rocket.flickr_images,
-      status: rocket.active,
+      wikipedia: rocket.wikipedia,
     }
   }
 
@@ -233,12 +246,13 @@ const useSpacexService = () => {
       id: ship.id,
       name: ship.name,
       type: ship.type,
+      roles: ship.roles,
       port: ship.home_port,
-      image: ship.image,
-      weight: ship.mass_kg,
+      active: ship.active,
       year: ship.year_built,
+      weight: ship.mass_kg,
       launches: ship.launches,
-      status: ship.active,
+      image: ship.image,
     }
   }
 
@@ -259,6 +273,7 @@ const useSpacexService = () => {
       name: sat.spaceTrack.OBJECT_NAME,
       version: sat.version,
       launch: sat.launch,
+      launchDate: sat.spaceTrack.LAUNCH_DATE,
     }
   }
 

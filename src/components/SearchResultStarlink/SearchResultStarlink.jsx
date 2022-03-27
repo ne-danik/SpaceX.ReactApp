@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // components
 import Button from "../Button/Button";
-import { Card, CardContent, CardTitle, CardMeta, CardImg } from '../Card/Card';
 
 const SearchResultStarlink = ({ data, searchValue }) => {
   const [currentData, setCurrentData] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [limit] = useState(8);
+  const [limit] = useState(12);
   const [dataEnded, setdataEnded] = useState(false);
   const [countResults, setCountResults] = useState(0);
 
