@@ -1,0 +1,77 @@
+@import "../../../../style/varialebles.scss";
+
+.profile__inner {
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.profile__title {
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.profile__content {
+  display: flex;
+  gap: 0 80px;
+
+  @media screen and (max-width: $max_device_width_mobile) {
+    flex-direction: column;
+  }
+}
+
+.profile__left {
+  @media screen and (max-width: $max_device_width_mobile) {
+    margin-bottom: 40px;
+  }
+}
+
+.profile__right {
+}
+
+.profile__avatar {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  object-position: top;
+
+  @media screen and (max-width: $max_device_width_mobile) {
+    width: 100%;
+  }
+}
+
+.profile__field {
+  margin-bottom: 20px;
+  & > span {
+    font-weight: 600;
+  }
+}
+
+.profile__status {
+  text-transform: capitalize;
+}
+
+.profile__social {
+  margin-top: 40px;
+}
+
+.profile__launches-items {
+}
+
+.profile__launches-item {
+  padding: 7px 20px;
+}
+
+.profile__launches-link {
+  display: inline-block;
+}
+
+.profile__launches-name {
+}
+
+.profile__launches-date {
+  margin-left: 5px;
+  font-size: 12px;
+  color: #828282;
+}

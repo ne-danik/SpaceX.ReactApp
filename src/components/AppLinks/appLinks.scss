@@ -1,0 +1,30 @@
+@import "../../style/varialebles.scss";
+
+.external__link,
+.internal__link {
+  path {
+    fill: #0044ff;
+  }
+}
+
+.external__link:hover,
+.internal__link:hover {
+  text-decoration: underline;
+}
+
+.external__icon {
+  display: inline-block;
+  margin-left: 2px;
+  vertical-align: top;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.internal__icon {
+  display: inline-block;
+  margin-bottom: 3px;
+  margin-left: 3px;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  user-select: none;
+}
