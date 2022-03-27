@@ -4,8 +4,6 @@ import { useSearch } from "../../hooks/useSearch";
 import Search from "../../components/Search/Search";
 import ShipsList from "../../components/ShipsList/ShipsList";
 import SearchResultShips from "../../components/SearchResultShips/SearchResultShips";
-// styles
-import './shipsPage.scss';
 
 const ShipsPage = ({ data }) => {
   const { searchValue, setSearchValue, setSearchParams, foundData } = useSearch(data, 'name');

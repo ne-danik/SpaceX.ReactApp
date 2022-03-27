@@ -4,8 +4,6 @@ import { useSearch } from "../../hooks/useSearch";
 import Search from "../../components/Search/Search";
 import DragonsList from "../../components/DragonsList/DragonsList";
 import SearchResultDragons from "../../components/SearchResultDragons/SearchResultDragons";
-// styles
-import './dragonsPage.scss';
 
 const DragonsPage = ({ data }) => {
   const { searchValue, setSearchValue, setSearchParams, foundData } = useSearch(data, 'name');
