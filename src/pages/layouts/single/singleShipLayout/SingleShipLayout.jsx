@@ -38,7 +38,7 @@ const SingleShipLayout = ({ data }) => {
           <li key={item.id} className="ship__launches-item">
             <Link className="ship__launches-link" to={`/launches/${item.id}`}>
               <span className="ship__launches-name">{item.name}</span>
-              <span className="ship__launches-date">{moment(item.date).format('MMM DD')}</span>
+              <span className="ship__launches-date">{moment(item.date).format('MMM DD, YYYY')}</span>
             </Link>
           </li>
         )
