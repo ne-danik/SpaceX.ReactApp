@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import moment from 'moment';
 // hooks
@@ -34,7 +34,8 @@ const UpcomingLaunchesList = () => {
   }
 
   const onLaunchesListLoaded = (data) => {
-    const currentSampling = data.slice(offset, offset + countElements);
+    const reverse = data.reverse();
+    const currentSampling = reverse.slice(offset, offset + countElements);
 
     let launchesEndedTrigger = false;
     if (currentSampling.length < countElements) {

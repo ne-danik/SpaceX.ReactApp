@@ -4,6 +4,8 @@ import { useSearch } from "../../hooks/useSearch";
 import Search from "../../components/Search/Search";
 import RocketsList from "../../components/RocketsList/RocketsList";
 import SearchResultRockets from "../../components/SearchResultRockets/SearchResultRockets";
+// styles
+import './rocketsPage.scss';
 
 const RocketsPage = ({ data }) => {
   const { searchValue, setSearchValue, setSearchParams, foundData } = useSearch(data, 'name');

@@ -4,7 +4,6 @@
 .navbar {
   display: flex;
   justify-content: center;
-  padding: 20px 0;
 }
 
 .navbar__link {
@@ -19,7 +18,6 @@
   width: 56px;
   height: 56px;
   overflow: hidden;
-  user-select: none;
 
   &:hover {
     background: #0044ff;

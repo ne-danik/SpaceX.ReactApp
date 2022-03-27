@@ -12,7 +12,7 @@ const StarlinkList = ({ data }) => {
 
   useEffect(() => {
     onDataLoaded(data);
-  }, [data])
+  }, [])
 
   const onDataLoaded = (data) => {
     const currentSampling = data.slice(offset, offset + limit);
@@ -35,7 +35,7 @@ const StarlinkList = ({ data }) => {
         <Link key={id} to={`/starlink/${id}`}>
           <Card>
             <CardContent>
-              <CardMeta content={version} />
+              <CardMeta content={`Version ${version}`} />
               <CardTitle content={name} />
             </CardContent>
           </Card>

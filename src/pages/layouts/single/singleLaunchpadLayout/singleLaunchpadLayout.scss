@@ -71,6 +71,30 @@
   }
 }
 
+.article__status {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  background-color: rgba(#fff, 0.2);
+  &--active {
+    color: #00ff19;
+    background-color: rgba(#00ff19, 0.2);
+  }
+  &--retired {
+    color: #ff0000;
+    background-color: rgba(#ff0000, 0.2);
+  }
+  &--under-construction {
+    color: #ffd600;
+    background-color: rgba(#ffd600, 0.2);
+  }
+}
+
 .article__statistics {
   display: flex;
   flex-flow: row wrap;
@@ -121,9 +145,6 @@
 .article__locate_link {
   color: #fff;
   text-decoration: underline;
-  path {
-    fill: #fff;
-  }
 }
 
 .scroll_down {

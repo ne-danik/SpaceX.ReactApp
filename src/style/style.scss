@@ -4,16 +4,6 @@
 @import "./mixins";
 @import "./global";
 
-::-moz-selection {
-  color: $white;
-	background: $dark;
-}
-
-::selection {
-  color: $white;
-	background: $dark;
-}
-
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -62,6 +52,35 @@
   &:hover {
     background: rgba($blue, 1);
   }
+}
+
+.breadcrumbs {
+  padding: 40px 0;
+  @media screen and (max-width: $max_device_width_mobile) {
+    padding: 20px 0;
+  }
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  &__separator {
+    margin: 0 10px;
+    color: $gray;
+    font-weight: 400;
+    &::after {
+      content: "/";
+    }
+  }
+}
+
+.forward {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 5px;
 }
 
 .text-block {
@@ -201,4 +220,11 @@
   margin-left: 5px;
   font-size: 12px;
   color: $gray;
+}
+
+.external-link {
+  &__icon {
+    margin-left: 2px;
+    vertical-align: top;
+  }
 }
