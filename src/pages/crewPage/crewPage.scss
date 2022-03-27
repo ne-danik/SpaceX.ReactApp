@@ -1,4 +1,4 @@
-@import '../../style/varialebles.scss';
+@import "../../style/varialebles.scss";
 
 @media screen and (max-width: $max_device_width_mobile) {
   .crew {
@@ -7,16 +7,14 @@
     .card__image {
       width: 96px;
       height: 96px;
-      border-radius: 50px;
+      border-radius: 50%;
       margin: 15px;
 
       .card__img {
         width: 96px;
         height: 96px;
-        border-radius: 50px;
-        &:hover {
-          transform: scale(1);
-        }
+        border-radius: 50%;
+        transform: scale(1);
       }
     }
 

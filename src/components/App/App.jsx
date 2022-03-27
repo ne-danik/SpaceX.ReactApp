@@ -12,12 +12,12 @@ import SingleDragonLayout from '../../pages/layouts/single/singleDragonLayout/Si
 import SingleRocketLayout from '../../pages/layouts/single/singleRocketLayout/SingleRocketLayout';
 import SingleShipLayout from '../../pages/layouts/single/singleShipLayout/SingleShipLayout';
 
-import MainPageLayout from '../../pages/layouts/MainPageLayout';
-import CrewPageLayout from '../../pages/layouts/CrewPageLayout';
-import StarlinkPageLayout from '../../pages/layouts/StarlinkPageLayout';
-import DragonsPageLayout from '../../pages/layouts/DragonsPageLayout';
-import RocketsPageLayout from '../../pages/layouts/RocketsPageLayout';
-import ShipsPageLayout from '../../pages/layouts/ShipsPageLayout';
+import MainPageLayout from '../../pages/layouts/categories/MainPageLayout';
+import CrewPageLayout from '../../pages/layouts/categories/CrewPageLayout';
+import StarlinkPageLayout from '../../pages/layouts/categories/StarlinkPageLayout';
+import DragonsPageLayout from '../../pages/layouts/categories/DragonsPageLayout';
+import RocketsPageLayout from '../../pages/layouts/categories/RocketsPageLayout';
+import ShipsPageLayout from '../../pages/layouts/categories/ShipsPageLayout';
 
 import CategoryPage from '../../pages/CategoryPage';
 import SinglePage from '../../pages/SinglePage';

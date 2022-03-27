@@ -64,7 +64,8 @@ const useSpacexService = () => {
       agency: member.agency,
       image: member.image,
       wikipedia: member.wikipedia,
-      launches: member.launches
+      launches: member.launches,
+      status: member.status,
     }
   }
 

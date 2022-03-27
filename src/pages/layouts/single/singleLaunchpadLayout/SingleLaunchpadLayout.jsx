@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 // hooks
 import useSpacexService from '../../../../services/useSpacexService';
@@ -9,6 +9,9 @@ import setContent from '../../../../utils/setContent';
 // components
 import { Skeleton } from '../../../../components/Skeleton/Skeleton';
 import { Card, CardContent, CardTitle, CardMeta, CardImg } from '../../../../components/Card/Card';
+import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../../components/Breadcrumbs/Breadcrumbs';
+import { Status } from '../../../../components/Status/Status';
+import { ExternalLink } from '../../../../components/AppLinks/AppLinks';
 // styles
 import './singleLaunchpadLayout.scss';
 
@@ -20,9 +23,7 @@ const SingleLaunchpadLayout = ({ data }) => {
   const { name, region, locality, latitude, longitude, details, status, launchAttempts, launchSuccesses, rockets, launches, image } = data;
 
   const { process, setProcess, clearError, getAllLaunches, getAllRockets } = useSpacexService();
-  const { wtProcess, wtSetProcess, wtClearError, getWeather } = useWeatherService();
-
-  const navigate = useNavigate();
+  const { wtSetProcess, wtClearError, getWeather } = useWeatherService();
 
   useEffect(() => {
     onLaunchesRequest();
@@ -134,35 +135,13 @@ const SingleLaunchpadLayout = ({ data }) => {
     )
   }
 
-  const renderStatus = (status) => {
-    const styleClass = status.replace(" ", "-");
-    switch (status) {
-      case 'active':
-        return (
-          <p className={`article__status article__status--${styleClass}`}>{status}</p>
-        )
-      case 'under construction':
-        return (
-          <p className={`article__status article__status--${styleClass}`}>{status}</p>
-        )
-      case 'retired':
-        return (
-          <p className={`article__status article__status--${styleClass}`}>{status}</p>
-        )
-      default:
-        return (
-          <p className="article__status">{status}</p>
-        )
-    }
-  }
-
   const renderRockets = (data) => {
     return (
       data.map((item) => {
         const { id, name, images, country } = item;
         return (
           <Link key={id} to={`/rockets/${id}`}>
-            <Card variant='image' style={{width: '275px'}}>
+            <Card variant='image' style={{ width: '275px' }}>
               <CardImg urlImage={images[0]} altImage={name} />
               <CardContent>
                 <CardTitle content={name} />
@@ -185,33 +164,19 @@ const SingleLaunchpadLayout = ({ data }) => {
     }
   }
 
-  const handleGoBack = (e) => {
-    e.preventDefault();
-    navigate(-1);
-  }
-
   return (
     <>
-      <div className="breadcrumbs">
-        <div className='container'>
-          <div className="breadcrumbs__inner">
-            <a href="#" onClick={handleGoBack} className='forward'>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.7071 5.29289C12.0976 5.68342 12.0976 6.31658 11.7071 6.70711L7.41421 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H7.41421L11.7071 17.2929C12.0976 17.6834 12.0976 18.3166 11.7071 18.7071C11.3166 19.0976 10.6834 19.0976 10.2929 18.7071L4.29289 12.7071C4.10536 12.5196 4 12.2652 4 12C4 11.7348 4.10536 11.4804 4.29289 11.2929L10.2929 5.29289C10.6834 4.90237 11.3166 4.90237 11.7071 5.29289Z" fill="#0044FF" />
-              </svg>
-              Go back
-            </a>
-            <span className='breadcrumbs__separator'></span>
-            <span>Launchpad</span>
-          </div>
-        </div>
-      </div>
+      <Breadcrumbs>
+        <ForvardLink />
+        <Divider />
+        <CrumbLabel label="Launchpad" />
+      </Breadcrumbs>
 
       <article className="article">
         <div className="article__bg" style={{ backgroundImage: `url(${image})` }}>
           <div className="article__header">
             <div className="container">
-              {status ? renderStatus(status) : <Skeleton width="40px" />}
+              {status ? <Status status={status} style={{ marginBottom: '24px' }} /> : <Skeleton width="40px" />}
               <h2 className="article__title">
                 {name ? name : <Skeleton width="50%" />}
               </h2>
@@ -222,12 +187,7 @@ const SingleLaunchpadLayout = ({ data }) => {
               <p className="article__subtitle">
                 <span>Locality:</span>
                 {locality ? (
-                  <a className="external-link article__locate_link" href={`https://www.google.com/maps?ll=${latitude},${longitude}`} rel="nofollow" target="_blank">
-                    {locality}
-                    <svg className="external-link__icon" width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.33333 3.33333C8.96514 3.33333 8.66667 3.03486 8.66667 2.66667C8.66667 2.29848 8.96514 2 9.33333 2H13.3333C13.5101 2 13.6797 2.07024 13.8047 2.19526C13.9298 2.32029 14 2.48986 14 2.66667L14 6.66667C14 7.03486 13.7015 7.33333 13.3333 7.33333C12.9651 7.33333 12.6667 7.03486 12.6667 6.66667L12.6667 4.27614L6.4714 10.4714C6.21106 10.7318 5.78894 10.7318 5.5286 10.4714C5.26825 10.2111 5.26825 9.78894 5.5286 9.52859L11.7239 3.33333H9.33333ZM2 4.66667C2 3.93029 2.59695 3.33333 3.33333 3.33333H6.66667C7.03486 3.33333 7.33333 3.63181 7.33333 4C7.33333 4.36819 7.03486 4.66667 6.66667 4.66667H3.33333V12.6667H11.3333V9.33333C11.3333 8.96514 11.6318 8.66667 12 8.66667C12.3682 8.66667 12.6667 8.96514 12.6667 9.33333V12.6667C12.6667 13.403 12.0697 14 11.3333 14H3.33333C2.59695 14 2 13.403 2 12.6667V4.66667Z" fill="#ffffff" />
-                    </svg>
-                  </a>
+                  <ExternalLink url={`https://www.google.com/maps?ll=${latitude},${longitude}`} className="article__locate_link" label={locality} iconHeight="12px" iconWidth="12px" />
                 ) : <Skeleton width="100px" />}
               </p>
               <p className="article__subtitle">
