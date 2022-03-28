@@ -9,7 +9,7 @@
 .card {
   @include transition;
   position: relative;
-  display: flex;
+  display: inline-flex;
   border: 1px solid $light;
   border-radius: 12px;
   width: 100%;

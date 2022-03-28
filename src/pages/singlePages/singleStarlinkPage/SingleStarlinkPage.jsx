@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import moment from 'moment';
 // services
-import useSpacexService from '../../../../services/useSpacexService';
+import useSpacexService from '../../../services/useSpacexService';
 // utils
-import setContent from '../../../../utils/setContent';
+import setContent from '../../../utils/setContent';
 // components
-import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../../components/Breadcrumbs/Breadcrumbs';
+import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../components/Breadcrumbs/Breadcrumbs';
 import { Link } from 'react-router-dom';
 
 const SingleStarlinkLayout = ({ data }) => {

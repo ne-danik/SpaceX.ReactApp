@@ -12,7 +12,7 @@ const DragonsList = ({ data }) => {
 
   useEffect(() => {
     onDataLoaded(data);
-  }, [])
+  }, [data])
 
   const onDataLoaded = (data) => {
     const currentSampling = data.slice(offset, offset + limit);

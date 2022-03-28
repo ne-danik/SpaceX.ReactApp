@@ -238,7 +238,7 @@
 }
 .hero__bg {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   color: #fff;
   background-repeat: no-repeat;
   background-size: cover;
@@ -246,6 +246,8 @@
   background-attachment: fixed;
   @media screen and (max-width: $max_device_width_laptop) {
     background-attachment: unset;
+  }
+  @media screen and (max-width: $max_device_width_mobile) {
     min-height: 600px;
   }
   &::after {
@@ -276,7 +278,7 @@
   padding: 80px 0;
   height: 100%;
   z-index: 2;
-  @media screen and (max-width: $max_device_width_laptop) {
+  @media screen and (max-width: $max_device_width_mobile) {
     padding: 40px 0;
   }
 }
@@ -285,34 +287,40 @@
   max-width: 65%;
   font-size: 36px;
   font-weight: 300;
-  @media screen and (max-width: $max_device_width_laptop) {
+  @media screen and (max-width: $max_device_width_tablet) {
     padding-bottom: 40px;
+  }
+  @media screen and (max-width: $max_device_width_mobile) {
     max-width: 100%;
     font-size: 32px;
   }
 }
 .hero__text-block {
-  padding: 5px 0;
+  padding: 10px 0 5px 35px;
   font-size: 14px;
-  text-transform: capitalize;
   span {
     margin-right: 10px;
     color: rgba($white, 0.5);
     text-transform: none;
   }
+  @media screen and (max-width: $max_device_width_mobile) {
+    padding: 5px 0;
+  }
 }
 .hero__statistics {
-  position: absolute;
-  content: "";
-  left: 0;
-  bottom: 15%;
+  padding: 80px 0 120px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
   width: 100%;
+  @media screen and (max-width: $max_device_width_mobile) {
+    padding: 40px 0 80px;
+    justify-content: space-between;
+  }
 }
 .statistic_box {
   display: inline-block;
+  padding: 20px 0;
   text-align: center;
   & .number {
     display: block;
@@ -320,7 +328,7 @@
     font-size: 96px;
     line-height: 96px;
     font-weight: 300;
-    @media screen and (max-width: $max_device_width_laptop) {
+    @media screen and (max-width: $max_device_width_mobile) {
       margin-bottom: 5px;
       font-size: 64px;
       line-height: 64px;
@@ -331,23 +339,11 @@
     font-size: 16px;
     text-transform: uppercase;
     text-align: center;
-    @media screen and (max-width: $max_device_width_laptop) {
+    @media screen and (max-width: $max_device_width_mobile) {
       font-size: 12px;
       font-weight: 500;
     }
   }
-}
-.hero__text {
-  line-height: 180%;
-  @media screen and (max-width: $max_device_width_tablet) {
-    max-width: 100%;
-  }
-}
-.hero__social {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 40px;
-  margin-top: 40px;
 }
 .hero__link {
   color: #fff;
@@ -374,7 +370,7 @@
   text-align: center;
   animation: flash 2s infinite;
   @media screen and (max-width: $max_device_width_tablet) {
-    bottom: 20px;
+    bottom: 40px;
   }
 }
 @keyframes flash {

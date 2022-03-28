@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 // services
-import useSpacexService from '../../../../services/useSpacexService';
+import useSpacexService from '../../../services/useSpacexService';
 // utils
-import setContent from '../../../../utils/setContent';
-import { setFloor } from '../../../../utils/setRound';
+import setContent from '../../../utils/setContent';
+import { setFloor } from '../../../utils/setRound';
 // components
-import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../../components/Breadcrumbs/Breadcrumbs';
-import { Skeleton } from '../../../../components/Skeleton/Skeleton';
+import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../components/Breadcrumbs/Breadcrumbs';
+import { Skeleton } from '../../../components/Skeleton/Skeleton';
 // styles
-import './singleShipLayout.scss';
+import './singleShipPage.scss';
 // resources
-import notFoundImg from '../../../../resources/images/not_found.jpg';
+import notFoundImg from '../../../resources/images/not_found.jpg';
 
 const SingleShipLayout = ({ data }) => {
   const { name, type, roles, port, active, year, weight, launches, image, } = data;

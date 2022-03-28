@@ -1,8 +1,7 @@
-@import "../../../../style/varialebles.scss";
+@import "../../../style/varialebles.scss";
 
 .profile {
   display: flex;
-  gap: 0 80px;
 
   @media screen and (max-width: $max_device_width_mobile) {
     flex-direction: column;
@@ -10,28 +9,28 @@
 }
 
 .profile__left {
+  flex: 1 1 auto;
   @media screen and (max-width: $max_device_width_mobile) {
     margin-bottom: 40px;
   }
 }
 
+.profile__right {
+  flex: 0 0 320px;
+  @media screen and (max-width: $max_device_width_tablet) {
+    flex: 1 1 70%;
+  }
+}
+
 .profile__avatar {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 420px;
   object-fit: cover;
   object-position: top;
-
-  @media screen and (max-width: $max_device_width_mobile) {
-    width: 100%;
-  }
 }
 
 .profile__status {
   text-transform: capitalize;
-}
-
-.profile__social {
-  margin-top: 40px;
 }
 
 .profile__launches-item {

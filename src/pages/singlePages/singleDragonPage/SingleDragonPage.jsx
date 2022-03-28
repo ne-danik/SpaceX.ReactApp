@@ -1,9 +1,9 @@
 import moment from 'moment';
 // utils
-import { setFloor } from '../../../../utils/setRound';
+import { setFloor } from '../../../utils/setRound';
 // components
-import { Status } from '../../../../components/Status/Status';
-import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../../components/Breadcrumbs/Breadcrumbs';
+import { Status } from '../../../components/Status/Status';
+import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../components/Breadcrumbs/Breadcrumbs';
 
 const SingleDragonLayout = ({ data }) => {
   const {
@@ -32,7 +32,7 @@ const SingleDragonLayout = ({ data }) => {
         <div className="hero__bg" style={{ backgroundImage: `url(${images[0]})` }}>
           <div className="hero__content">
             <div className="container">
-              {<Status status={status} style={{ marginBottom: '24px' }} />}
+              {<Status status={status} style={{ marginBottom: '40px' }} />}
               <h2 className="hero__title">{name}</h2>
               <p className="hero__text-block">
                 <span>Type:</span>{type}
@@ -49,12 +49,12 @@ const SingleDragonLayout = ({ data }) => {
               <p className="hero__text-block">
                 <span>Payload:</span>{setFloor(payloadMass)}kg
               </p>
-              <div className="scroll_down">
-                <svg width="64" height="64" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M76 36L48 64L20 36" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
             </div>
+          </div>
+          <div className="scroll_down">
+            <svg width="64" height="64" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M76 36L48 64L20 36" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </div>
         </div>
         <div className="container">

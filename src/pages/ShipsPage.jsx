@@ -1,9 +1,9 @@
 // hooks
-import { useSearch } from "../../hooks/useSearch";
+import { useSearch } from "../hooks/useSearch";
 // components
-import Search from "../../components/Search/Search";
-import ShipsList from "../../components/ShipsList/ShipsList";
-import SearchResultShips from "../../components/SearchResultShips/SearchResultShips";
+import Search from "../components/Search/Search";
+import ShipsList from "../components/ShipsList/ShipsList";
+import SearchResultShips from "../components/SearchResultShips/SearchResultShips";
 
 const ShipsPage = ({ data }) => {
   const { searchValue, setSearchValue, setSearchParams, foundData } = useSearch(data, 'name');

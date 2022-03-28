@@ -1,9 +1,9 @@
 // hooks
-import { useSearch } from "../../hooks/useSearch";
+import { useSearch } from "../hooks/useSearch";
 // components
-import Search from "../../components/Search/Search";
-import RocketsList from "../../components/RocketsList/RocketsList";
-import SearchResultRockets from "../../components/SearchResultRockets/SearchResultRockets";
+import Search from "../components/Search/Search";
+import RocketsList from "../components/RocketsList/RocketsList";
+import SearchResultRockets from "../components/SearchResultRockets/SearchResultRockets";
 
 const RocketsPage = ({ data }) => {
   const { searchValue, setSearchValue, setSearchParams, foundData } = useSearch(data, 'name');

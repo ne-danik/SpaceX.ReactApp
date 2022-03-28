@@ -1,8 +1,8 @@
 import moment from 'moment';
 // components
-import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../../components/Breadcrumbs/Breadcrumbs';
+import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../components/Breadcrumbs/Breadcrumbs';
 // styles
-import './singleLaunchLayout.scss';
+import './singleLaunchPage.scss';
 
 const SingleLaunchLayout = ({ data }) => {
   const { name, date, details, flightNumber, patch_sm, patch_lg, urlYoutube, urlArticle } = data;
