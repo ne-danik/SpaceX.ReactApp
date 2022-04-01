@@ -1,0 +1,44 @@
+@import "../../style/varialebles.scss";
+@import "../../style/mixins.scss";
+
+.modal {
+  @include transition;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  overflow-y: auto;
+  z-index: 99;
+}
+
+.modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal__content {
+  @include transition;
+  padding: 20px;
+  border-radius: 12px;
+  width: 50vw;
+  background-color: #fff;
+  transform: translateY(-20%);
+  overflow-y: auto;
+
+  @media screen and (max-width: $max_device_width_mobile) {
+    width: 90vw;
+    max-height: 80vh;
+  }
+}
+
+.modal__content.open {
+  transform: translateY(0);
+}

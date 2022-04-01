@@ -4,7 +4,6 @@ import './search.scss';
 // resources
 import { ReactComponent as IconSearch } from '../../resources/icons/search.svg';
 import { ReactComponent as IconReset } from '../../resources/icons/close.svg';
-import { ReactComponent as IconFilter } from '../../resources/icons/filter.svg';
 
 const Search = ({ searchValue, setSearchParams, setSearchValue, placeholder = 'search...' }) => {
   const [stateSearch, setStateSearch] = useState(searchValue);
@@ -37,29 +36,37 @@ const Search = ({ searchValue, setSearchParams, setSearchValue, placeholder = 's
   }
 
   return (
-    <div className="container">
-      <form className="search" autoComplete='off' onSubmit={onSubmitSearchForm}>
-        <input
-          type="text"
-          name="search"
-          placeholder={placeholder}
-          value={stateSearch}
-          onChange={handleChangeSearchInput}
-          className="search__input"
-        />
-        {params.name ? (
-          <button type="button" onClick={onResetInput} className="input__btn input__btn_reset" title="Reset">
-            <IconReset />
+    <>
+      <div className="container">
+        <form className="search" autoComplete='off' onSubmit={onSubmitSearchForm}>
+          <input
+            type="text"
+            name="search"
+            placeholder={placeholder}
+            value={stateSearch}
+            onChange={handleChangeSearchInput}
+            className="search__input"
+          />
+          {params.name ? (
+            <button
+              type="button"
+              onClick={onResetInput}
+              className="input__btn input__btn_reset"
+              title="Reset"
+            >
+              <IconReset />
+            </button>
+          ) : null}
+          <button
+            type="submit"
+            className="input__btn input__btn_search"
+            title="Search"
+          >
+            <IconSearch />
           </button>
-        ) : null}
-        <button type="submit" className="input__btn input__btn_search" title="Search">
-          <IconSearch />
-        </button>
-        <button type="button" className="input__btn input__btn_filter" title="Filter">
-          <IconFilter />
-        </button>
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
   )
 }
 

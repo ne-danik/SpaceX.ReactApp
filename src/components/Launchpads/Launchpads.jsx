@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // hooks
-import useSpacexService from '../../services/useSpacexService';
+import useSpacexService from '../../services/spasexService';
 // utils
 import setContent from '../../utils/setContent';
 // components

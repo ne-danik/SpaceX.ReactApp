@@ -25,7 +25,9 @@ const MainPage = () => {
         setSearchParams={setSearchParams}
         placeholder={'Search launches...'}
       />
-      {searchValue.length ? <SearchResultLaunches searchValue={searchValue} /> : (
+      {searchValue.length ? (
+        <SearchResultLaunches searchValue={searchValue} />
+      ) : (
         <>
           <NextLaunch />
           <UpcomingLaunchesList />

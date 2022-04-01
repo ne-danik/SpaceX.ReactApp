@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 // hooks
-import useSpacexService from '../../services/useSpacexService';
+import useSpacexService from '../../services/spasexService';
 // components
 import { Skeleton } from '../../components/Skeleton/Skeleton';
 // styles

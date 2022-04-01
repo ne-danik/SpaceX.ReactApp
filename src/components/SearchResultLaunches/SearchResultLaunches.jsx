@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // utils
 import setContent from "../../utils/setContent";
 // services
-import useSpacexService from "../../services/useSpacexService";
+import useSpacexService from "../../services/spasexService";
 // styles
 import './searchResults.scss';
 import Button from "../Button/Button";

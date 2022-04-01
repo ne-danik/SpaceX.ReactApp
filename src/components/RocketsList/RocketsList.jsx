@@ -65,5 +65,4 @@ const RocketsList = ({ data }) => {
   )
 }
 
-
 export default RocketsList;

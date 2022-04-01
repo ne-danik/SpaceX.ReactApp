@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 //services
-import useSpacexService from '../services/useSpacexService';
+import useSpacexService from '../services/spasexService';
 // utils
 import setContent from '../utils/setContent';
 

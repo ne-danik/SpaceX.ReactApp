@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import moment from 'moment';
 // hooks
-import useSpacexService from "../../services/useSpacexService";
+import useSpacexService from "../../services/spasexService";
 // utils
 import setContent from "../../utils/setContent";
 // components

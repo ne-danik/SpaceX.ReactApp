@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import moment from 'moment';
 // services
-import useSpacexService from '../../../services/useSpacexService';
+import useSpacexService from '../../../services/spasexService';
 // utils
 import setContent from '../../../utils/setContent';
 // components
