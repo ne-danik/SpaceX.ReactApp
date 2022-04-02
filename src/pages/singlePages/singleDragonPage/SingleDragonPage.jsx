@@ -1,6 +1,4 @@
 import moment from 'moment';
-// utils
-import { setFloor } from '../../../utils/setRound';
 // components
 import { Status } from '../../../components/Status/Status';
 import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../components/Breadcrumbs/Breadcrumbs';
@@ -47,7 +45,7 @@ const SingleDragonLayout = ({ data }) => {
                 <span>Diameter:</span>{diameter}m
               </p>
               <p className="hero__text-block">
-                <span>Payload:</span>{setFloor(payloadMass)}kg
+                <span>Payload:</span>{payloadMass.toLocaleString('de-DE')}kg
               </p>
             </div>
           </div>

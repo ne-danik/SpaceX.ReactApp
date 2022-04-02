@@ -5,7 +5,6 @@ import moment from 'moment';
 import useSpacexService from '../../../services/spasexService';
 // utils
 import setContent from '../../../utils/setContent';
-import { setFloor } from '../../../utils/setRound';
 // components
 import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../components/Breadcrumbs/Breadcrumbs';
 import { Skeleton } from '../../../components/Skeleton/Skeleton';
@@ -83,7 +82,7 @@ const SingleShipLayout = ({ data }) => {
                   Year Built: <span>{year ? year : '—'}</span>
                 </div>
                 <div className="article__text">
-                  Weight: <span>{weight ? setFloor(weight) + 'kg' : '—'}</span>
+                  Weight: <span>{weight ? weight.toLocaleString('de-DE') + 'kg' : '—'}</span>
                 </div>
                 <div className="article__text">
                   Launches: {setContent(process, () => renderLaunches(launchesList), null, LaunchesSkeleton)}

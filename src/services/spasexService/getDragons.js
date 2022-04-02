@@ -18,11 +18,11 @@ export const getDragons = (request, _apiBase) => {
       firstFlight: dragon.first_flight,
       images: dragon.flickr_images,
       wikipedia: dragon.wikipedia,
-      status: String(dragon.active),
-      crewCapacity: String(dragon.crew_capacity),
-      height: String(dragon.height_w_trunk.meters),
-      diameter: String(dragon.diameter.meters),
-      payloadMass: String(dragon.launch_payload_mass.kg),
+      status: dragon.active,
+      crewCapacity: dragon.crew_capacity,
+      height: dragon.height_w_trunk.meters,
+      diameter: dragon.diameter.meters,
+      payloadMass: dragon.launch_payload_mass.kg,
     }
   }
 

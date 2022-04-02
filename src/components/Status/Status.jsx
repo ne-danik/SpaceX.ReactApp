@@ -1,7 +1,7 @@
 import './status.scss';
 
 export const Status = ({ status = '', style = null }) => {
-  switch (status) {
+  switch (status.toString()) {
     case 'active':
     case 'true':
       return (

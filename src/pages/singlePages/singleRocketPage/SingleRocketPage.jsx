@@ -1,6 +1,6 @@
 import moment from 'moment';
 // utils
-import { setFloor, setRound } from '../../../utils/setRound';
+import { numberToRanks } from '../../../utils/numberToRanks';
 // components
 import { Status } from '../../../components/Status/Status';
 import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../components/Breadcrumbs/Breadcrumbs';
@@ -29,7 +29,7 @@ const SingleRocketLayout = ({ data }) => {
     const elements = data.map(item => {
       return (
         <p key={item.id} className="hero__text-block" style={{ marginLeft: '20px' }}>
-          <span>{item.name}:</span>{setFloor(item.kg)}kg
+          <span>{item.name}:</span>{item.kg.toLocaleString('de-DE')}kg
         </p>
       )
     })
@@ -70,7 +70,7 @@ const SingleRocketLayout = ({ data }) => {
                 <span>Diameter:</span>{diameter}m
               </p>
               <p className="hero__text-block">
-                <span>Mass:</span>{setFloor(mass)}kg
+                <span>Mass:</span>{mass.toLocaleString('de-DE')}kg
               </p>
               {payloadWeights ? renderPayloadWeights(payloadWeights) : null}
               <div className="hero__statistics">
@@ -82,7 +82,7 @@ const SingleRocketLayout = ({ data }) => {
                 </div>
                 <div className="statistic_box">
                   <span className="number">
-                    {setRound(cost)}
+                    {numberToRanks(cost)}
                   </span>
                   <span className="label">Launch cost</span>
                 </div>
