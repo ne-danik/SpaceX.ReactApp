@@ -1,5 +1,7 @@
 # SpaceX Portal
 
+![thumbnail](/thumbnail.png "Thumbnail")
+
 SpaceX Portal is an open-source app that provides information about completed, current and upcoming Space X missions, rockets and other vechicles, and more. Special thanks to the SpaceX-API team for providing and maintaining the data.
 
 
