@@ -73,37 +73,37 @@ const AboutPage = () => {
               <p className="about__field">
                 <span className="field__title">Founded:</span>
                 <span className="field__value">
-                  {String(founded).length ? founded : <Skeleton width="100px" />}
+                  {founded ? founded : <Skeleton width="100px" />}
                 </span>
               </p>
               <p className="about__field">
                 <span className="field__title">Employees:</span>
                 <span className="field__value">
-                  {String(employees).length ? employees : <Skeleton width="100px" />}
+                  {employees ? employees : <Skeleton width="100px" />}
                 </span>
               </p>
               <p className="about__field">
                 <span className="field__title">Vehicles:</span>
                 <span className="field__value">
-                  {String(vehicles).length ? vehicles : <Skeleton width="100px" />}
+                  {vehicles ? vehicles : <Skeleton width="100px" />}
                 </span>
               </p>
               <p className="about__field">
                 <span className="field__title">Launch sites:</span>
                 <span className="field__value">
-                  {String(launchSites).length ? launchSites : <Skeleton width="100px" />}
+                  {launchSites ? launchSites : <Skeleton width="100px" />}
                 </span>
               </p>
               <p className="about__field">
                 <span className="field__title">Test sites:</span>
                 <span className="field__value">
-                  {String(testSites).length ? testSites : <Skeleton width="100px" />}
+                  {testSites ? testSites : <Skeleton width="100px" />}
                 </span>
               </p>
               <p className="about__field">
                 <span className="field__title">Valuation:</span>
                 <span className="field__value">
-                  {String(valuation).length ? `$${valuation}` : <Skeleton width="100px" />}
+                  {valuation ? `$${valuation}` : <Skeleton width="100px" />}
                 </span>
               </p>
             </div>
