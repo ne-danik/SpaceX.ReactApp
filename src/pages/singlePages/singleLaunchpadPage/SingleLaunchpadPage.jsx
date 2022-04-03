@@ -139,7 +139,7 @@ const SingleLaunchpadLayout = ({ data }) => {
         const { id, name, images, country } = item;
         return (
           <Link key={id} to={`/rockets/${id}`}>
-            <Card variant='image' style={{ width: '275px' }}>
+            <Card variant='image'>
               <CardImg urlImage={images[0]} altImage={name} />
               <CardContent>
                 <CardTitle content={name} />
@@ -235,7 +235,7 @@ const SingleLaunchpadLayout = ({ data }) => {
             </div>
             <div className="text-block">
               <h3 className="h3 text-block__title">Rockets</h3>
-              <div>
+              <div className="cards">
                 {rockets && rockets.length ? (
                   setContent(process, () => renderRockets(roketsData))
                 ) : (
