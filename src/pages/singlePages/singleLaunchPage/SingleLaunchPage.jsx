@@ -3,6 +3,8 @@ import moment from 'moment';
 import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../components/Breadcrumbs/Breadcrumbs';
 // styles
 import './singleLaunchPage.scss';
+// resources
+import patchDefault from '../../../resources/images/patch.png';
 
 const SingleLaunchLayout = ({ data }) => {
   const { name, date, details, flightNumber, patch_sm, patch_lg, urlYoutube, urlArticle } = data;
@@ -50,13 +52,9 @@ const SingleLaunchLayout = ({ data }) => {
                   </a>
                 ) : null
               }
-              {
-                patch_sm || patch_lg ? (
-                  <div className="patch">
-                    <img className="patch__image" src={patch_sm || patch_lg} alt={name} />
-                  </div>
-                ) : null
-              }
+              <div className="patch">
+                <img className="patch__image" src={patch_sm || patch_lg || patchDefault} alt={name} />
+              </div>
             </div>
           </div>
         </div>

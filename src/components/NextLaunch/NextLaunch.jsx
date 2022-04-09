@@ -8,6 +8,8 @@ import setContent from "../../utils/setContent";
 // components
 import { Card, CardContent, CardTitle, CardMeta, CardImg, CardDesc } from '../Card/Card';
 import { Skeleton } from "../Skeleton/Skeleton";
+// resources
+import patchDefault from '../../resources/images/patch.png';
 
 const NextLaunch = () => {
   const [nextLaunch, setNextLaunch] = useState([]);
@@ -52,7 +54,7 @@ const View = ({ data }) => {
             <CardTitle content={name} />
             <CardDesc content={details} />
           </CardContent>
-          <CardImg style={{ objectFit: 'contain' }} urlImage={patch_sm} altImage={name} />
+          <CardImg style={{ objectFit: 'contain' }} urlImage={patch_sm || patchDefault} altImage={name} />
         </Card>
       </Link>
     </>

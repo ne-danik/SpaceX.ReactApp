@@ -20,9 +20,9 @@ const useWeatherService = () => {
 
   const _transformWeather = (data) => {
     return {
-      tempC: Math.round(parseInt(data.current.temp_c)) + '°C',
+      tempC: Math.round(parseInt(data.current.temp_c)) + ' °C',
       weather: data.current.condition.text,
-      wind: Math.round(parseInt(data.current.wind_kph) * (5 / 18)) + 'm/s',
+      wind: Math.round(parseInt(data.current.wind_kph) * (5 / 18)) + ' m/s',
     }
   }
 

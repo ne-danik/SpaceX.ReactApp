@@ -1,9 +1,13 @@
 import moment from 'moment';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from "swiper";
 // utils
 import { numberToRanks } from '../../../utils/numberToRanks';
 // components
 import { Status } from '../../../components/Status/Status';
 import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../components/Breadcrumbs/Breadcrumbs';
+// styles
+import "swiper/css/navigation";
 
 const SingleRocketLayout = ({ data }) => {
   const {
@@ -14,6 +18,7 @@ const SingleRocketLayout = ({ data }) => {
     description,
     firstFlight,
     height,
+    heightFt,
     diameter,
     mass,
     stages,
@@ -29,7 +34,7 @@ const SingleRocketLayout = ({ data }) => {
     const elements = data.map(item => {
       return (
         <p key={item.id} className="hero__text-block" style={{ marginLeft: '20px' }}>
-          <span>{item.name}:</span>{item.kg.toLocaleString('de-DE')}kg
+          <span>{item.name}:</span>{item.kg.toLocaleString('de-DE')} kg
         </p>
       )
     })
@@ -64,13 +69,13 @@ const SingleRocketLayout = ({ data }) => {
                 <span>Stages:</span>{stages}
               </p>
               <p className="hero__text-block">
-                <span>Height:</span>{height}m
+                <span>Height:</span>{height} m
               </p>
               <p className="hero__text-block">
-                <span>Diameter:</span>{diameter}m
+                <span>Diameter:</span>{diameter} m
               </p>
               <p className="hero__text-block">
-                <span>Mass:</span>{mass.toLocaleString('de-DE')}kg
+                <span>Mass:</span>{mass.toLocaleString('de-DE')} kg
               </p>
               {payloadWeights ? renderPayloadWeights(payloadWeights) : null}
               <div className="hero__statistics">
@@ -120,25 +125,39 @@ const SingleRocketLayout = ({ data }) => {
                 </a>
               </div>
             </div>
-            {images.length ? <Images data={images} /> : null}
           </div>
         </div>
+        {images.length ? (
+          <>
+            <div className="container">
+              <div className="text-block">
+                <h3 className="h3 text-block__title">Images</h3>
+              </div>
+            </div>
+            <Slider data={images} />
+          </>
+        ) : null}
       </article>
     </>
   )
 }
 
-const Images = ({ data }) => {
-  const elements = data.map((item, idx) => {
-    return <img key={item} src={item} alt={'Dragon image ' + (idx + 1)} className="images-block__img" />
+const Slider = ({ data }) => {
+  const items = data.map((item, idx) => {
+    return (
+      <SwiperSlide key={item} className="slide__wrapper" >
+        <img src={item} alt={'Rocket image ' + (idx + 1)} className="slide__image" />
+      </SwiperSlide >
+    )
   })
   return (
-    <div className="text-block">
-      <h3 className="h3 text-block__title">Images</h3>
-      <div className="images-block">
-        {elements}
-      </div>
-    </div >
+    <Swiper
+      className="slider"
+      modules={[Navigation]}
+      navigation={true}
+    >
+      {items}
+    </Swiper>
   )
 }
 

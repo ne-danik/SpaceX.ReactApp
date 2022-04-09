@@ -89,11 +89,7 @@ const SingleShipLayout = ({ data }) => {
                 </div>
               </div>
               <div className="ship__right">
-                {image ? (
-                  <img className='ship__img' src={image} alt={name} />
-                ) : (
-                  <img className='ship__img' src={notFoundImg} alt={name} />
-                )}
+                  <img className='ship__img' src={image || notFoundImg} alt={name} />
               </div>
             </div>
           </div>

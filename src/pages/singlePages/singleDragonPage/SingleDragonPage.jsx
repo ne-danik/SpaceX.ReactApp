@@ -1,7 +1,11 @@
 import moment from 'moment';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from "swiper";
 // components
 import { Status } from '../../../components/Status/Status';
 import { Breadcrumbs, CrumbLabel, Divider, ForvardLink } from '../../../components/Breadcrumbs/Breadcrumbs';
+// styles
+import "swiper/css/navigation";
 
 const SingleDragonLayout = ({ data }) => {
   const {
@@ -39,13 +43,13 @@ const SingleDragonLayout = ({ data }) => {
                 <span>Crew capacity:</span>{crewCapacity}
               </p>
               <p className="hero__text-block">
-                <span>Height:</span>{height}m
+                <span>Height:</span>{height} m
               </p>
               <p className="hero__text-block">
-                <span>Diameter:</span>{diameter}m
+                <span>Diameter:</span>{diameter} m
               </p>
               <p className="hero__text-block">
-                <span>Payload:</span>{payloadMass.toLocaleString('de-DE')}kg
+                <span>Payload:</span>{payloadMass.toLocaleString('de-DE')} kg
               </p>
             </div>
           </div>
@@ -74,25 +78,39 @@ const SingleDragonLayout = ({ data }) => {
                 </a>
               </div>
             </div>
-            {images.length ? <Images data={images} /> : null}
           </div>
         </div>
+        {images.length ? (
+          <>
+            <div className="container">
+              <div className="text-block">
+                <h3 className="h3 text-block__title">Images</h3>
+              </div>
+            </div>
+            <Slider data={images} />
+          </>
+        ) : null}
       </article>
     </>
   )
 }
 
-const Images = ({ data }) => {
-  const elements = data.map((item, idx) => {
-    return <img key={item} src={item} alt={'Dragon image ' + (idx + 1)} className="images-block__img" />
+const Slider = ({ data }) => {
+  const items = data.map((item, idx) => {
+    return (
+      <SwiperSlide key={item} className="slide__wrapper" >
+        <img src={item} alt={'Dragon image ' + (idx + 1)} className="slide__image" />
+      </SwiperSlide >
+    )
   })
   return (
-    <div className="text-block">
-      <h3 className="h3 text-block__title">Images</h3>
-      <div className="images-block">
-        {elements}
-      </div>
-    </div >
+    <Swiper
+      className="slider"
+      modules={[Navigation]}
+      navigation={true}
+    >
+      {items}
+    </Swiper>
   )
 }
 
