@@ -18,7 +18,6 @@ const SingleRocketLayout = ({ data }) => {
     description,
     firstFlight,
     height,
-    heightFt,
     diameter,
     mass,
     stages,

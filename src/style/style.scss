@@ -346,6 +346,7 @@
   }
 }
 .hero__link {
+  @include transition;
   color: #fff;
   text-decoration: underline;
   font-weight: 400;
